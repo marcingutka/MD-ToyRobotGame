@@ -10,6 +10,9 @@ namespace TRG.InputHandler.Mappers
     {
         private readonly IInputPlacingValidator placingValidator;
 
+        private const string COMMAND_SEPARATOR = " ";
+        private const string COMMAND_PARAMETERS_SEPARATOR = ",";
+
         public InputMapper(IInputPlacingValidator placingValidator) 
         {
             this.placingValidator = placingValidator;
@@ -21,7 +24,7 @@ namespace TRG.InputHandler.Mappers
 
             foreach (var command in commands)
             {
-                var splitedCommand = command.Split(" ");
+                var splitedCommand = command.Trim().Split(COMMAND_SEPARATOR);
                 var commandName = splitedCommand[0];
 
                 try
@@ -34,7 +37,7 @@ namespace TRG.InputHandler.Mappers
                     }
                     else if (commandType == CommandType.PlaceRobot || commandType == CommandType.PlaceWall)
                     {
-                        var commandParameters = splitedCommand[1].Split(",").ToList();
+                        var commandParameters = splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList();
 
                         if (commandParameters.Count >= 2 && placingValidator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1])))
                         {
