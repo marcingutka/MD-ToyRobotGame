@@ -1,6 +1,6 @@
 ﻿using TRG.Models.Commands;
 
-namespace TRG.InputHandler.Mapper
+namespace TRG.InputHandler.Mappers
 {
     public interface IInputMapper
     {
