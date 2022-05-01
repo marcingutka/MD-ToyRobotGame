@@ -22,14 +22,15 @@ namespace TRG.InputHandler.Mappers
             foreach (var command in commands)
             {
                 var splitedCommand = command.Split(" ");
+                var commandName = splitedCommand[0];
 
                 try
                 {
-                    var commandType = MapCommandType(splitedCommand[0]);
+                    var commandType = MapCommandType(commandName);
 
                     if (commandType == CommandType.Movement)
                     {
-                        commandList.Add(MapMovementCommand(splitedCommand[0]));
+                        commandList.Add(MapMovementCommand(commandName));
                     }
                     else if (commandType == CommandType.PlaceRobot || commandType == CommandType.PlaceWall)
                     {
