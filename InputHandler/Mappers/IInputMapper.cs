@@ -4,6 +4,6 @@ namespace TRG.InputHandler.Mappers
 {
     public interface IInputMapper
     {
-        IEnumerable<Command> Map(List<string> commands);
+        List<Command> Map(List<string> commands);
     }
 }
