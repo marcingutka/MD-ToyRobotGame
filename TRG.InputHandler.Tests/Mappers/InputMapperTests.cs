@@ -32,7 +32,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -53,7 +53,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -74,7 +74,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -95,7 +95,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -116,7 +116,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -137,7 +137,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -158,7 +158,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -179,7 +179,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(true);
+            validator.Validate(default, default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -200,7 +200,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(false);
+            validator.Validate(default, default).ReturnsForAnyArgs(false);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -220,7 +220,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(false);
+            validator.Validate(default, default).ReturnsForAnyArgs(false);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -240,7 +240,7 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
-            validator.Validate(default).ReturnsForAnyArgs(false);
+            validator.Validate(default, default).ReturnsForAnyArgs(false);
 
             //Act
             var commandList = mapper.Map(content, grid);
