@@ -17,11 +17,10 @@ namespace TRG.InputHandler.Tests.Validators
         }
 
         [Test]
-        public void Validate_When_PlaceRobot_Position_Is_Correct_And_Facing_Is_NORTH_Returns_True()
+        public void Validate_When_Position_Is_Correct_And_Facing_Is_NORTH_Returns_True()
         {
             //Arrange
             var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
             var commandParameters = new List<string> { "2", "3", "NORTH" };
 
             //Act
@@ -32,56 +31,10 @@ namespace TRG.InputHandler.Tests.Validators
         }
 
         [Test]
-        public void Validate_When_PlaceRobot_Position_Is_Correct_And_Facing_Is_EAST_Returns_True()
+        public void Validate_When_Row_Is_Greater_Than_Grid_Y_Returns_False()
         {
             //Arrange
             var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
-            var commandParameters = new List<string> { "2", "3", "EAST" };
-
-            //Act
-            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
-
-            //Assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void Validate_When_PlaceRobot_Position_Is_Correct_And_Facing_Is_SOUTH_Returns_True()
-        {
-            //Arrange
-            var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
-            var commandParameters = new List<string> { "2", "3", "SOUTH" };
-
-            //Act
-            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
-
-            //Assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void Validate_When_PlaceRobot_Position_Is_Correct_And_Facing_Is_WEST_Returns_True()
-        {
-            //Arrange
-            var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
-            var commandParameters = new List<string> { "2", "3", "WEST" };
-
-            //Act
-            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
-
-            //Assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void Validate_When_PlaceRobot_Row_Is_Greater_Than_Grid_Y_Returns_False()
-        {
-            //Arrange
-            var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
             var commandParameters = new List<string> { "6", "3", "NORTH" };
 
             //Act
@@ -92,11 +45,10 @@ namespace TRG.InputHandler.Tests.Validators
         }
 
         [Test]
-        public void Validate_When_PlaceRobot_Row_Is_Less_Than_1_Returns_False()
+        public void Validate_When_Row_Is_Less_Than_1_Returns_False()
         {
             //Arrange
             var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
             var commandParameters = new List<string> { "0", "3", "NORTH" };
 
             //Act
@@ -107,11 +59,10 @@ namespace TRG.InputHandler.Tests.Validators
         }
 
         [Test]
-        public void Validate_When_PlaceRobot_Column_Is_Greater_Than_Grid_Y_Returns_False()
+        public void Validate_When_Column_Is_Greater_Than_Grid_Y_Returns_False()
         {
             //Arrange
             var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
             var commandParameters = new List<string> { "2", "6", "NORTH" };
 
             //Act
@@ -122,11 +73,24 @@ namespace TRG.InputHandler.Tests.Validators
         }
 
         [Test]
-        public void Validate_When_PlaceRobot_Column_Is_Less_Than_1_Returns_False()
+        public void Validate_When_Column_Is_Less_Than_1_Returns_False()
         {
             //Arrange
             var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
+            var commandParameters = new List<string> { "2", "0", "NORTH" };
+
+            //Act
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
+
+            //Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void Validate_When_Grid_Is_Null_Returns_False()
+        {
+            //Arrange
+            Grid grid = null;
             var commandParameters = new List<string> { "2", "0", "NORTH" };
 
             //Act
