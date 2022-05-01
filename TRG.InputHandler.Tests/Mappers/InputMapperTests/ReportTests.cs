@@ -51,8 +51,6 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(true);
-
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -71,8 +69,6 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var command = "REPORT";
 
             content.Add(command);
-
-            validator.Validate(default, default, default).ReturnsForAnyArgs(false);
 
             //Act
             mapper.Map(content, grid);
