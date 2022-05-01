@@ -6,7 +6,7 @@ using TRG.Models.Model;
 
 namespace TRG.InputHandler.Tests.Validators
 {
-    public class InputValidatorTests
+    public class InputPlacingValidatorTests
     {
         private InputPlacingValidator validator;
 
