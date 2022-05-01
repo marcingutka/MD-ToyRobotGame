@@ -59,12 +59,14 @@ namespace TRG.InputHandler.Mappers
                 AllowedCommands.PLACE_WALL => CommandType.PlaceWall,
                 AllowedCommands.REPORT => CommandType.Report,
                 AllowedCommands.MOVE => CommandType.Movement,
+                AllowedCommands.LEFT => CommandType.Movement,
                 _ => throw new NotSupportedException()
             };
 
         private static Command MapMovementCommand(string moveCommand) => 
             moveCommand switch
             {
+                AllowedCommands.LEFT => new Movement(MovementCommand.Left),
                 AllowedCommands.MOVE => new Movement(MovementCommand.Forward),
                 _ => throw new NotSupportedException()
             };
