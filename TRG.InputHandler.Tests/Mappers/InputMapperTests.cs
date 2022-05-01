@@ -95,7 +95,7 @@ namespace TRG.InputHandler.Tests.Mappers
         }
 
         [Test]
-        public void Map_When_PlaceRobot_Command_Is_Correct_Returns_CorrectPlacementOrientation()
+        public void Map_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_North_Returns_NorthPlacementOrientation()
         {
             //Arrange
             var grid = new Grid(5, 5);
@@ -111,6 +111,63 @@ namespace TRG.InputHandler.Tests.Mappers
             var mappedCommand = commandList[0] as PlaceRobot;
             //Assert
             Assert.AreEqual(OrientationState.North, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_East_Returns_EastPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var content = new List<string>();
+
+            var command = "PLACE_ROBOT 2,3,EAST";
+
+            content.Add(command);
+
+            //Act
+            var commandList = mapper.Map(content, grid);
+
+            var mappedCommand = commandList[0] as PlaceRobot;
+            //Assert
+            Assert.AreEqual(OrientationState.East, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_South_Returns_SouthPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var content = new List<string>();
+
+            var command = "PLACE_ROBOT 2,3,SOUTH";
+
+            content.Add(command);
+
+            //Act
+            var commandList = mapper.Map(content, grid);
+
+            var mappedCommand = commandList[0] as PlaceRobot;
+            //Assert
+            Assert.AreEqual(OrientationState.South, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_Westh_Returns_WestPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var content = new List<string>();
+
+            var command = "PLACE_ROBOT 2,3,WEST";
+
+            content.Add(command);
+
+            //Act
+            var commandList = mapper.Map(content, grid);
+
+            var mappedCommand = commandList[0] as PlaceRobot;
+            //Assert
+            Assert.AreEqual(OrientationState.West, mappedCommand.Position.Orientation);
         }
 
         [Test]
