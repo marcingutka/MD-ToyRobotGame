@@ -23,20 +23,27 @@ namespace TRG.InputHandler.Mappers
             {
                 var splitedCommand = command.Split(" ");
 
-                var commandType = MapCommandType(splitedCommand[0]);
-
-                if (commandType != CommandType.Movement || commandType != CommandType.Report)
+                try
                 {
-                    var commandParameters = splitedCommand[1].Split(",").ToList();
+                    var commandType = MapCommandType(splitedCommand[0]);
 
-                    if (validator.Validate(grid, commandType, commandParameters))
+                    if (commandType != CommandType.Movement || commandType != CommandType.Report)
                     {
-                        commandList.Add(MapCommand(commandType, commandParameters));
+                        var commandParameters = splitedCommand[1].Split(",").ToList();
+
+                        if (validator.Validate(grid, commandType, commandParameters))
+                        {
+                            commandList.Add(MapCommand(commandType, commandParameters));
+                        }
+                    }
+                    else
+                    {
+                        commandList.Add(MapCommand(commandType, null));
                     }
                 }
-                else
+                catch (NotImplementedException)
                 {
-                    commandList.Add(MapCommand(commandType, null));
+                    continue;
                 }
             }
 
