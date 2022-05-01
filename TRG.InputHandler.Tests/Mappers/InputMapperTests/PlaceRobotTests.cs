@@ -7,9 +7,9 @@ using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
 
-namespace TRG.InputHandler.Tests.Mappers
+namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
-    public class InputMapperTests
+    public class PlaceRobotTests
     {
         private IInputPlacingValidator validator;
         private InputMapper mapper;
