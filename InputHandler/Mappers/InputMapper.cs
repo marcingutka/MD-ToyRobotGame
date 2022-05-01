@@ -52,9 +52,8 @@ namespace TRG.InputHandler.Mappers
             return commandList;
         }
 
-        private static CommandType MapCommandType(string commandType)
-        {
-            return commandType switch
+        private static CommandType MapCommandType(string commandType) => 
+            commandType switch
             {
                 AllowedCommands.PLACE_ROBOT => CommandType.PlaceRobot,
                 AllowedCommands.PLACE_WALL => CommandType.PlaceWall,
@@ -62,31 +61,25 @@ namespace TRG.InputHandler.Mappers
                 AllowedCommands.MOVE => CommandType.Movement,
                 _ => throw new NotSupportedException()
             };
-        }
 
-        private static Command MapMovementCommand(string moveCommand)
-        {
-            return moveCommand switch
+        private static Command MapMovementCommand(string moveCommand) => 
+            moveCommand switch
             {
                 AllowedCommands.MOVE => new Movement(MovementCommand.Forward),
                 _ => throw new NotSupportedException()
             };
-        }
 
-        private static Command MapCommand(CommandType commandType, List<string> commandParameters)
-        {
-            return commandType switch
+        private static Command MapCommand(CommandType commandType, List<string> commandParameters) =>
+            commandType switch
             {
                 CommandType.PlaceRobot => new PlaceRobot(new GridPosition { Y = int.Parse(commandParameters[0]), X = int.Parse(commandParameters[1]), Orientation = MapFacing(commandParameters[2]) }),
                 CommandType.PlaceWall => new PlaceWall(new Position { Y = int.Parse(commandParameters[0]), X = int.Parse(commandParameters[1]) }),
                 CommandType.Report => new Report(),
                 _ => throw new NotSupportedException()
             };
-        }
 
-        private static OrientationState MapFacing(string facing)
-        {
-            return facing switch
+        private static OrientationState MapFacing(string facing) =>
+            facing switch
             {
                 AllowedFacings.NORTH => OrientationState.North,
                 AllowedFacings.EAST => OrientationState.East,
@@ -94,6 +87,5 @@ namespace TRG.InputHandler.Mappers
                 AllowedFacings.WEST => OrientationState.West,
                 _ => throw new NotSupportedException()
             };
-        }
     }
 }
