@@ -61,6 +61,7 @@ namespace TRG.InputHandler.Mappers
                 AllowedCommands.REPORT => CommandType.Report,
                 AllowedCommands.MOVE => CommandType.Movement,
                 AllowedCommands.LEFT => CommandType.Movement,
+                AllowedCommands.RIGHT => CommandType.Movement,
                 _ => throw new NotSupportedException()
             };
 
@@ -68,6 +69,7 @@ namespace TRG.InputHandler.Mappers
             moveCommand switch
             {
                 AllowedCommands.LEFT => new Movement(MovementCommand.Left),
+                AllowedCommands.RIGHT => new Movement(MovementCommand.Right),
                 AllowedCommands.MOVE => new Movement(MovementCommand.Forward),
                 _ => throw new NotSupportedException()
             };

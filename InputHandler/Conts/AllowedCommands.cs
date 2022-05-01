@@ -7,5 +7,6 @@
         internal const string REPORT = "REPORT";
         internal const string MOVE = "MOVE";
         internal const string LEFT = "LEFT";
+        internal const string RIGHT = "RIGHT";
     }
 }
