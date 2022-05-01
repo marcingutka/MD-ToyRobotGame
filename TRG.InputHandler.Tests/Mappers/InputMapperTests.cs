@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using NSubstitute;
+using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using TRG.InputHandler.Mappers;
+using TRG.InputHandler.Validators;
 using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
@@ -10,12 +11,14 @@ namespace TRG.InputHandler.Tests.Mappers
 {
     public class InputMapperTests
     {
+        private IInputValidator validator;
         private InputMapper mapper;
 
         [SetUp]
         public void Setup()
         {
-            mapper = new InputMapper();
+            validator = Substitute.For<IInputValidator>();
+            mapper = new InputMapper(validator);
         }
 
         [Test]
@@ -28,6 +31,8 @@ namespace TRG.InputHandler.Tests.Mappers
             var command = "PLACE_ROBOT 2,3,NORTH";
 
             content.Add(command);
+
+            validator.Validate(default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -48,6 +53,8 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
+            validator.Validate(default).ReturnsForAnyArgs(true);
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -66,6 +73,8 @@ namespace TRG.InputHandler.Tests.Mappers
             var command = "PLACE_ROBOT 2,3,NORTH";
 
             content.Add(command);
+
+            validator.Validate(default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -86,6 +95,8 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
+            validator.Validate(default).ReturnsForAnyArgs(true);
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -104,6 +115,8 @@ namespace TRG.InputHandler.Tests.Mappers
             var command = "PLACE_ROBOT 2,3,NORTH";
 
             content.Add(command);
+
+            validator.Validate(default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -124,6 +137,8 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
+            validator.Validate(default).ReturnsForAnyArgs(true);
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -142,6 +157,8 @@ namespace TRG.InputHandler.Tests.Mappers
             var command = "PLACE_ROBOT 2,3,SOUTH";
 
             content.Add(command);
+
+            validator.Validate(default).ReturnsForAnyArgs(true);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -162,6 +179,8 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
+            validator.Validate(default).ReturnsForAnyArgs(true);
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -181,6 +200,8 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
+            validator.Validate(default).ReturnsForAnyArgs(false);
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -199,6 +220,8 @@ namespace TRG.InputHandler.Tests.Mappers
 
             content.Add(command);
 
+            validator.Validate(default).ReturnsForAnyArgs(false);
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -216,6 +239,8 @@ namespace TRG.InputHandler.Tests.Mappers
             var command = "PLACE_ROBOT 2,3,CENTER";
 
             content.Add(command);
+
+            validator.Validate(default).ReturnsForAnyArgs(false);
 
             //Act
             var commandList = mapper.Map(content, grid);
