@@ -9,7 +9,7 @@ using TRG.Models.Model;
 
 namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
-    public class MoveTests
+    public class LeftTests
     {
         private IInputPlacingValidator validator;
         private InputMapper mapper;
@@ -22,13 +22,13 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
         }
 
         [Test]
-        public void Map_When_Move_Command_Is_Correct_Returns_MovementCommandType()
+        public void Map_When_Left_Command_Is_Correct_Returns_MovementCommandType()
         {
             //Arrange
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "MOVE";
+            var command = "LEFT";
 
             content.Add(command);
 
@@ -41,13 +41,13 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
         }
 
         [Test]
-        public void Map_When_Move_Command_Is_Correct_Returns_MovementObject()
+        public void Map_When_Left_Command_Is_Correct_Returns_MovementObject()
         {
             //Arrange
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "MOVE";
+            var command = "LEFT";
 
             content.Add(command);
 
@@ -60,13 +60,13 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
         }
 
         [Test]
-        public void Map_When_Move_Command_Is_Correct_Returns_MovementObject_With_MovementCommand_Equal_Forward()
+        public void Map_When_Left_Command_Is_Correct_Returns_MovementObject_With_MovementCommand_Equal_Left()
         {
             //Arrange
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "MOVE";
+            var command = "LEFT";
 
             content.Add(command);
 
@@ -75,17 +75,17 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             var mappedCommand = commandList[0] as Movement;
             //Assert
-            Assert.AreEqual(MovementCommand.Forward, mappedCommand.MovementCommand);
+            Assert.AreEqual(MovementCommand.Left, mappedCommand.MovementCommand);
         }
 
         [Test]
-        public void Map_When_Command_Is_Move_PlacingValidator_Is_Not_Called()
+        public void Map_When_Command_Is_Left_PlacingValidator_Is_Not_Called()
         {
             //Arrange
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "MOVE";
+            var command = "Left";
 
             content.Add(command);
 
