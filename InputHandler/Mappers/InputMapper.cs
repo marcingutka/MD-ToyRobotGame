@@ -65,10 +65,10 @@ namespace TRG.InputHandler.Mappers
         {
             return facing switch
             {
-                "NORTH" => OrientationState.North,
-                "EAST" => OrientationState.East,
-                "SOUTH" => OrientationState.South,
-                "WEST" => OrientationState.West,
+                AllowedFacings.NORTH => OrientationState.North,
+                AllowedFacings.EAST => OrientationState.East,
+                AllowedFacings.SOUTH => OrientationState.South,
+                AllowedFacings.WEST => OrientationState.West,
                 _ => throw new NotImplementedException()
             };
         }
