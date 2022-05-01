@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TRG.InputHandler.Mappers;
-using TRG.InputHandler.Validator;
+using TRG.InputHandler.Validators;
 
 namespace TRG.InputHandler.DI
 {
