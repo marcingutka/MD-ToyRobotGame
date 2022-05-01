@@ -4,7 +4,7 @@
     {
         public List<string> ReadFile(string filePath)
         {
-            throw new NotImplementedException();
+            return File.ReadAllLines(filePath).ToList();
         }
     }
 }
