@@ -98,31 +98,5 @@ namespace TRG.InputHandler.Tests.Validators
             //Assert
             Assert.IsFalse(result);
         }
-
-        [Test]
-        public void IsNumber_When_Value_Is_Number_Returns_True()
-        {
-            //Arrange
-            var value = "3";
-
-            //Act
-            var result = validator.IsNumber(value);
-
-            //Assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void IsNumber_When_Value_Is_Not_Number_Returns_False()
-        {
-            //Arrange
-            var value = "TESTSTRING";
-
-            //Act
-            var result = validator.IsNumber(value);
-
-            //Assert
-            Assert.IsFalse(result);
-        }
     }
 }
