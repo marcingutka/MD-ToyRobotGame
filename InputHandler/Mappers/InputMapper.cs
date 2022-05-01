@@ -8,11 +8,11 @@ namespace TRG.InputHandler.Mappers
 {
     public class InputMapper : IInputMapper
     {
-        private readonly IInputPlacingValidator validator;
+        private readonly IInputPlacingValidator placingValidator;
 
-        public InputMapper(IInputPlacingValidator validator) 
+        public InputMapper(IInputPlacingValidator placingValidator) 
         {
-            this.validator = validator;
+            this.placingValidator = placingValidator;
         }
 
         public List<Command> Map(List<string> commands, Grid grid)
@@ -27,11 +27,11 @@ namespace TRG.InputHandler.Mappers
                 {
                     var commandType = MapCommandType(splitedCommand[0]);
 
-                    if (commandType != CommandType.Movement || commandType != CommandType.Report)
+                    if (commandType == CommandType.PlaceRobot || commandType == CommandType.PlaceWall)
                     {
                         var commandParameters = splitedCommand[1].Split(",").ToList();
 
-                        if (validator.Validate(grid, commandType, commandParameters))
+                        if (commandParameters.Count >= 2 && placingValidator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1])))
                         {
                             commandList.Add(MapCommand(commandType, commandParameters));
                         }
@@ -41,7 +41,8 @@ namespace TRG.InputHandler.Mappers
                         commandList.Add(MapCommand(commandType, null));
                     }
                 }
-                catch (NotSupportedException) { }
+                catch (NotSupportedException) 
+                { }
             }
 
             return commandList;

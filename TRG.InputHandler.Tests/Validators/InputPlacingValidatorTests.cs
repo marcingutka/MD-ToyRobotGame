@@ -25,7 +25,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "2", "3", "NORTH" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsTrue(result);
@@ -40,7 +40,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "2", "3", "EAST" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsTrue(result);
@@ -55,7 +55,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "2", "3", "SOUTH" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsTrue(result);
@@ -70,7 +70,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "2", "3", "WEST" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsTrue(result);
@@ -85,7 +85,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "6", "3", "NORTH" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsFalse(result);
@@ -100,7 +100,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "0", "3", "NORTH" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsFalse(result);
@@ -115,7 +115,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "2", "6", "NORTH" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsFalse(result);
@@ -130,7 +130,7 @@ namespace TRG.InputHandler.Tests.Validators
             var commandParameters = new List<string> { "2", "0", "NORTH" };
 
             //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
+            var result = validator.Validate(grid, int.Parse(commandParameters[0]), int.Parse(commandParameters[1]));
 
             //Assert
             Assert.IsFalse(result);
