@@ -1,4 +1,4 @@
-﻿namespace TRG.InputHandler.Validator
+﻿namespace TRG.InputHandler.Validators
 {
     public class InputValidator : IInputValidator
     {
