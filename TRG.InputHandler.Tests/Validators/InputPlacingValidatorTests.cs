@@ -135,20 +135,5 @@ namespace TRG.InputHandler.Tests.Validators
             //Assert
             Assert.IsFalse(result);
         }
-
-        [Test]
-        public void Validate_When_PlaceRobot_Facing_Is_Not_Supported_Returns_False()
-        {
-            //Arrange
-            var grid = new Grid(5, 5);
-            var commandType = CommandType.PlaceRobot;
-            var commandParameters = new List<string> { "2", "3", "CENTER" };
-
-            //Act
-            var result = validator.Validate(grid, commandType, commandParameters);
-
-            //Assert
-            Assert.IsFalse(result);
-        }
     }
 }
