@@ -169,7 +169,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
         }
 
         [Test]
-        public void Map_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_Westh_Returns_WestPlacementOrientation()
+        public void Map_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_West_Returns_WestPlacementOrientation()
         {
             //Arrange
             var grid = new Grid(5, 5);
@@ -256,7 +256,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "PLACE_ROBOT 2,3,CENTER";
+            var command = "PLACE_ROBOT 2,3,NORTH";
 
             content.Add(command);
 
