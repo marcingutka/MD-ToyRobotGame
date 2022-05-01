@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\InputHandler\TRG.InputHandler.csproj" />
     <ProjectReference Include="..\TRG.Models\TRG.Models.csproj" />
   </ItemGroup>
