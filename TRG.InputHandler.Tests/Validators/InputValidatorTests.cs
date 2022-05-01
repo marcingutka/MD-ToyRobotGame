@@ -8,12 +8,12 @@ namespace TRG.InputHandler.Tests.Validators
 {
     public class InputValidatorTests
     {
-        private InputValidator validator;
+        private InputPlacingValidator validator;
 
         [SetUp]
         public void Setup()
         {
-            validator = new InputValidator();
+            validator = new InputPlacingValidator();
         }
 
         [Test]

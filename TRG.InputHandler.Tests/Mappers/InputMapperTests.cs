@@ -11,13 +11,13 @@ namespace TRG.InputHandler.Tests.Mappers
 {
     public class InputMapperTests
     {
-        private IInputValidator validator;
+        private IInputPlacingValidator validator;
         private InputMapper mapper;
 
         [SetUp]
         public void Setup()
         {
-            validator = Substitute.For<IInputValidator>();
+            validator = Substitute.For<IInputPlacingValidator>();
             mapper = new InputMapper(validator);
         }
 

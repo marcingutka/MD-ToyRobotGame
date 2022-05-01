@@ -8,9 +8,9 @@ namespace TRG.InputHandler.Mappers
 {
     public class InputMapper : IInputMapper
     {
-        private readonly IInputValidator validator;
+        private readonly IInputPlacingValidator validator;
 
-        public InputMapper(IInputValidator validator) 
+        public InputMapper(IInputPlacingValidator validator) 
         {
             this.validator = validator;
         }
@@ -41,10 +41,7 @@ namespace TRG.InputHandler.Mappers
                         commandList.Add(MapCommand(commandType, null));
                     }
                 }
-                catch (NotImplementedException)
-                {
-                    continue;
-                }
+                catch (NotSupportedException) { }
             }
 
             return commandList;
@@ -55,7 +52,7 @@ namespace TRG.InputHandler.Mappers
             return commandType switch
             {
                 AllowedCommands.PLACE_ROBOT => CommandType.PlaceRobot,
-                _ => throw new NotImplementedException()
+                _ => throw new NotSupportedException()
             };
         }
 
@@ -64,7 +61,7 @@ namespace TRG.InputHandler.Mappers
             return commandType switch
             {
                 CommandType.PlaceRobot => new PlaceRobot(new GridPosition { Y = int.Parse(commandParameters[0]), X = int.Parse(commandParameters[1]), Orientation = MapFacing(commandParameters[2]) }),
-                _ => throw new NotImplementedException()
+                _ => throw new NotSupportedException()
             };
         }
 
@@ -76,7 +73,7 @@ namespace TRG.InputHandler.Mappers
                 AllowedFacings.EAST => OrientationState.East,
                 AllowedFacings.SOUTH => OrientationState.South,
                 AllowedFacings.WEST => OrientationState.West,
-                _ => throw new NotImplementedException()
+                _ => throw new NotSupportedException()
             };
         }
     }

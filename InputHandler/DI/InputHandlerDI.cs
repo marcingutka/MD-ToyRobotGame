@@ -9,7 +9,7 @@ namespace TRG.InputHandler.DI
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IInputMapper, InputMapper>();
-            services.AddSingleton<IInputValidator, InputValidator>();
+            services.AddSingleton<IInputPlacingValidator, InputPlacingValidator>();
         }
     }
 }
