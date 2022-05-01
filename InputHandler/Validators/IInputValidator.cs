@@ -1,7 +1,9 @@
-﻿namespace TRG.InputHandler.Validators
+﻿using TRG.Models.Enums;
+
+namespace TRG.InputHandler.Validators
 {
     public interface IInputValidator
     {
-        bool Validate(List<string> content);
+        bool Validate(CommandType commandType, List<string> content);
     }
 }
