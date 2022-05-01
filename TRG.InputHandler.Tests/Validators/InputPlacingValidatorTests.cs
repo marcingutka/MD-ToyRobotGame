@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 using TRG.InputHandler.Validators;
-using TRG.Models.Enums;
 using TRG.Models.Model;
 
 namespace TRG.InputHandler.Tests.Validators
