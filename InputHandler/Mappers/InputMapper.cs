@@ -1,4 +1,5 @@
-﻿using TRG.InputHandler.Validators;
+﻿using TRG.InputHandler.Conts;
+using TRG.InputHandler.Validators;
 using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
@@ -24,34 +25,30 @@ namespace TRG.InputHandler.Mappers
 
                 var commandType = MapCommandType(splitedCommand[0]);
 
-                if (!commandType.HasValue) throw new Exception("This command is not served");
-
-                var commandParameters = new List<string>();
-
-                if (commandType.Value != CommandType.Movement || commandType.Value != CommandType.Report)
+                if (commandType != CommandType.Movement || commandType != CommandType.Report)
                 {
-                    commandParameters = splitedCommand[1].Split(",").ToList();
+                    var commandParameters = splitedCommand[1].Split(",").ToList();
 
-                    if (validator.Validate(commandType.Value, commandParameters))
+                    if (validator.Validate(commandType, commandParameters))
                     {
-                        commandList.Add(MapCommand(commandType.Value, commandParameters));
+                        commandList.Add(MapCommand(commandType, commandParameters));
                     }
                 }
                 else
                 {
-                    commandList.Add(MapCommand(commandType.Value, null));
+                    commandList.Add(MapCommand(commandType, null));
                 }
             }
 
             return commandList;
         }
 
-        private static CommandType? MapCommandType(string commandType)
+        private static CommandType MapCommandType(string commandType)
         {
             return commandType switch
             {
-                "PLACE_ROBOT" => CommandType.PlaceRobot,
-                _ => null,
+                AllowedCommands.PLACE_ROBOT => CommandType.PlaceRobot,
+                _ => throw new NotImplementedException()
             };
         }
 
