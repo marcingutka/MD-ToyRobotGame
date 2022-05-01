@@ -8,7 +8,7 @@ namespace TRG.InputHandler.Mappers
 {
     public class InputMapper : IInputMapper
     {
-        private IInputValidator validator;
+        private readonly IInputValidator validator;
 
         public InputMapper(IInputValidator validator) 
         {
