@@ -19,8 +19,4 @@
     <ProjectReference Include="..\TRG.Models\TRG.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
 </Project>
