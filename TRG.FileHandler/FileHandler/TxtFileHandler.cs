@@ -2,9 +2,7 @@
 {
     public class TxtFileHandler : IFileHandler
     {
-        public List<string> ReadFile(string filePath)
-        {
-            return File.ReadAllLines(filePath).ToList();
-        }
+        public List<string> ReadFile(string filePath) =>
+            File.ReadAllLines(filePath).ToList();
     }
 }
