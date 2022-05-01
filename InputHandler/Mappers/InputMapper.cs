@@ -27,7 +27,11 @@ namespace TRG.InputHandler.Mappers
                 {
                     var commandType = MapCommandType(splitedCommand[0]);
 
-                    if (commandType == CommandType.PlaceRobot || commandType == CommandType.PlaceWall)
+                    if (commandType == CommandType.Movement)
+                    {
+                        commandList.Add(MapMovementCommand(splitedCommand[0]));
+                    }
+                    else if (commandType == CommandType.PlaceRobot || commandType == CommandType.PlaceWall)
                     {
                         var commandParameters = splitedCommand[1].Split(",").ToList();
 
@@ -55,6 +59,16 @@ namespace TRG.InputHandler.Mappers
                 AllowedCommands.PLACE_ROBOT => CommandType.PlaceRobot,
                 AllowedCommands.PLACE_WALL => CommandType.PlaceWall,
                 AllowedCommands.REPORT => CommandType.Report,
+                AllowedCommands.MOVE => CommandType.Movement,
+                _ => throw new NotSupportedException()
+            };
+        }
+
+        private static Command MapMovementCommand(string moveCommand)
+        {
+            return moveCommand switch
+            {
+                AllowedCommands.MOVE => new Movement(MovementCommand.Forward),
                 _ => throw new NotSupportedException()
             };
         }
