@@ -146,7 +146,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
         }
 
         [Test]
-        public void Map_When_CommandType_Is_PlaceRobot_PlacingValidator_Is_Called_Once()
+        public void Map_When_CommandType_Is_PlaceWall_PlacingValidator_Is_Called_Once()
         {
             //Arrange
             var grid = new Grid(5, 5);
