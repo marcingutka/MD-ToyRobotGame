@@ -53,6 +53,7 @@ namespace TRG.InputHandler.Mappers
             return commandType switch
             {
                 AllowedCommands.PLACE_ROBOT => CommandType.PlaceRobot,
+                AllowedCommands.PLACE_WALL => CommandType.PlaceWall,
                 _ => throw new NotSupportedException()
             };
         }
@@ -62,6 +63,7 @@ namespace TRG.InputHandler.Mappers
             return commandType switch
             {
                 CommandType.PlaceRobot => new PlaceRobot(new GridPosition { Y = int.Parse(commandParameters[0]), X = int.Parse(commandParameters[1]), Orientation = MapFacing(commandParameters[2]) }),
+                CommandType.PlaceWall => new PlaceWall(new Position { Y = int.Parse(commandParameters[0]), X = int.Parse(commandParameters[1]) }),
                 _ => throw new NotSupportedException()
             };
         }
