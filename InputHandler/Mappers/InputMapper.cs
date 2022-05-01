@@ -29,7 +29,7 @@ namespace TRG.InputHandler.Mappers
                 {
                     var commandParameters = splitedCommand[1].Split(",").ToList();
 
-                    if (validator.Validate(commandType, commandParameters))
+                    if (validator.Validate(grid, commandType, commandParameters))
                     {
                         commandList.Add(MapCommand(commandType, commandParameters));
                     }
