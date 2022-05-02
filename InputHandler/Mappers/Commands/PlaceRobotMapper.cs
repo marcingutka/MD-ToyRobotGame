@@ -19,6 +19,7 @@ namespace TRG.InputHandler.Mappers.Commands
             this.grid = grid;
             this.validator = validator;
         }
+
         public Command Map(List<string> parameters)
         {
             if (parameters is null || parameters.Count != 3) return null;

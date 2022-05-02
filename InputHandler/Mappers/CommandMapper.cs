@@ -23,7 +23,7 @@ namespace TRG.InputHandler.Mappers
                 IMapCommand mapper = commandType switch
                 {
                     AllowedCommands.PLACE_ROBOT => new PlaceRobotMapper(placingValidator, grid),
-                    AllowedCommands.PLACE_WALL => new PlaceWallMapper(),
+                    AllowedCommands.PLACE_WALL => new PlaceWallMapper(placingValidator, grid),
                     _ => throw new NotSupportedException()
                 };
 
