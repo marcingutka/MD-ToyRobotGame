@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using TRG.InputHandler.Mappers;
-using TRG.InputHandler.Validators;
 using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
@@ -11,14 +10,14 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
     public class PlaceWallTests
     {
-        private IInputPlacingValidator validator;
+        private ICommandMapper commandMapper;
         private InputMapper mapper;
 
         [SetUp]
         public void Setup()
         {
-            validator = Substitute.For<IInputPlacingValidator>();
-            mapper = new InputMapper(validator);
+            commandMapper = Substitute.For<ICommandMapper>();
+            mapper = new InputMapper(commandMapper);
         }
 
         [Test]
@@ -32,7 +31,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(true);
+            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" ), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -49,11 +48,11 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "PLACE_WALL 2,3,NORTH";
+            var command = "PLACE_WALL 2,3";
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(true);
+            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -74,7 +73,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(true);
+            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -91,11 +90,11 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "PLACE_WALL 2,3,NORTH";
+            var command = "PLACE_WALL 2,3";
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(true);
+            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -116,7 +115,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(false);
+            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "6" && x[1] == "3"), Arg.Any<Grid>()).Returns((PlaceWall)null);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -136,33 +135,13 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            validator.Validate(default, default, default).ReturnsForAnyArgs(false);
+            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "6"), Arg.Any<Grid>()).Returns((PlaceWall)null);
 
             //Act
             var commandList = mapper.Map(content, grid);
 
             //Assert
             Assert.IsTrue(commandList.Count == 0);
-        }
-
-        [Test]
-        public void Map_When_CommandType_Is_PlaceWall_PlacingValidator_Is_Called_Once()
-        {
-            //Arrange
-            var grid = new Grid(5, 5);
-            var content = new List<string>();
-
-            var command = "PLACE_WALL 2,3";
-
-            content.Add(command);
-
-            validator.Validate(default, default, default).ReturnsForAnyArgs(false);
-
-            //Act
-            mapper.Map(content, grid);
-
-            //Assert
-            Assert.DoesNotThrow(() => validator.Received(1).Validate(Arg.Any<Grid>(), Arg.Any<int>(), Arg.Any<int>()));
         }
     }
 }

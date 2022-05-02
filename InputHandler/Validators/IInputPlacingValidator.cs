@@ -1,5 +1,4 @@
-﻿using TRG.Models.Enums;
-using TRG.Models.Model;
+﻿using TRG.Models.Model;
 
 namespace TRG.InputHandler.Validators
 {

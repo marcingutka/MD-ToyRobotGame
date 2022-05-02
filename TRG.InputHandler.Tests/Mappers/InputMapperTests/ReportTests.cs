@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using TRG.InputHandler.Mappers;
-using TRG.InputHandler.Validators;
 using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
@@ -11,14 +10,14 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
     public class ReportTests
     {
-        private IInputPlacingValidator validator;
+        private ICommandMapper commandMapper;
         private InputMapper mapper;
 
         [SetUp]
         public void Setup()
         {
-            validator = Substitute.For<IInputPlacingValidator>();
-            mapper = new InputMapper(validator);
+            commandMapper = Substitute.For<ICommandMapper>();
+            mapper = new InputMapper(commandMapper);
         }
 
         [Test]
@@ -31,6 +30,8 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var command = "REPORT";
 
             content.Add(command);
+
+            commandMapper.Map(Arg.Is<string>(x => x == "REPORT"), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Report());
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -51,6 +52,8 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
+            commandMapper.Map(Arg.Is<string>(x => x == "REPORT"), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Report());
+
             //Act
             var commandList = mapper.Map(content, grid);
 
@@ -60,7 +63,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
         }
 
         [Test]
-        public void Map_When_CommandType_Is_Report_PlacingValidator_Is_Not_Called()
+        public void Map_When_Report_Command_Has_Parameters_Returns_Null()
         {
             //Arrange
             var grid = new Grid(5, 5);
@@ -70,11 +73,13 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
+            commandMapper.Map(Arg.Is<string>(x => x == "REPORT"), Arg.Is<List<string>>(x => x.Count > 0), Arg.Any<Grid>()).Returns((Report)null);
+
             //Act
-            mapper.Map(content, grid);
+            var commandList = mapper.Map(content, grid);
 
             //Assert
-            Assert.DoesNotThrow(() => validator.DidNotReceive().Validate(Arg.Any<Grid>(), Arg.Any<int>(), Arg.Any<int>()));
+            Assert.IsTrue(commandList.Count == 0);
         }
     }
 }

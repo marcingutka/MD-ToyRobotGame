@@ -8,14 +8,14 @@ namespace TRG.InputHandler.Mappers
 {
     public class InputMapper : IInputMapper
     {
-        private readonly IInputPlacingValidator placingValidator;
+        private readonly ICommandMapper commandMapper;
 
         private const string COMMAND_SEPARATOR = " ";
         private const string COMMAND_PARAMETERS_SEPARATOR = ",";
 
-        public InputMapper(IInputPlacingValidator placingValidator) 
+        public InputMapper(ICommandMapper commandMapper) 
         {
-            this.placingValidator = placingValidator;
+            this.commandMapper = commandMapper;
         }
 
         public List<Command> Map(List<string> commands, Grid grid)
@@ -26,8 +26,16 @@ namespace TRG.InputHandler.Mappers
             {
                 var splitedCommand = command.Trim().Split(COMMAND_SEPARATOR);
                 var commandName = splitedCommand[0];
+                var commandParameters = splitedCommand.Length > 1 ? splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList() : null;
 
-                try
+                var commandObj = this.commandMapper.Map(commandName, commandParameters, grid);
+
+                if (commandObj is not null)
+                {
+                    commandList.Add(commandObj);
+                }
+
+                /*try
                 {
                     var commandType = MapCommandType(commandName);
 
@@ -50,7 +58,7 @@ namespace TRG.InputHandler.Mappers
                     }
                 }
                 catch (NotSupportedException) 
-                { }
+                { }*/
             }
 
             return commandList;

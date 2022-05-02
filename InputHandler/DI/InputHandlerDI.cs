@@ -10,6 +10,7 @@ namespace TRG.InputHandler.DI
         {
             services.AddSingleton<IInputMapper, InputMapper>();
             services.AddSingleton<IInputPlacingValidator, InputPlacingValidator>();
+            services.AddSingleton<ICommandMapper, CommandMapper>();
         }
     }
 }
