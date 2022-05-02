@@ -1,5 +1,4 @@
 ﻿using TRG.InputHandler.Conts;
-using TRG.InputHandler.Validators;
 using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
@@ -24,6 +23,8 @@ namespace TRG.InputHandler.Mappers
 
             foreach (var command in commands)
             {
+                if (string.IsNullOrEmpty(command)) continue;
+
                 var splitedCommand = command.Trim().Split(COMMAND_SEPARATOR);
                 var commandName = splitedCommand[0];
                 var commandParameters = splitedCommand.Length > 1 ? splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList() : null;
