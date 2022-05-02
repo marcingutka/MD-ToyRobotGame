@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TRG.Logic.Manager;
 
 namespace TRG.Logic.DI
 {
@@ -6,6 +7,7 @@ namespace TRG.Logic.DI
     {
         public static void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICommandManager, CommandManager>();
         }
     }
 }
