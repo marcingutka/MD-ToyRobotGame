@@ -5,6 +5,6 @@ namespace TRG.Logic.Manager
 {
     public interface ICommandManager
     {
-        void ExecuteCommands(Grid grid, IEnumerable<Command> commands);
+        string ExecuteCommand(Grid grid, List<GridPoint> gridData, Robot robot, Command command);
     }
 }

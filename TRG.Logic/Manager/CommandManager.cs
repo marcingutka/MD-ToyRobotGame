@@ -5,7 +5,7 @@ namespace TRG.Logic.Manager
 {
     public class CommandManager : ICommandManager
     {
-        public void ExecuteCommands(Grid grid, IEnumerable<Command> commands)
+        public string ExecuteCommand(Grid grid, List<GridPoint> gridData, Robot robot, Command command)
         {
             throw new NotImplementedException();
         }
