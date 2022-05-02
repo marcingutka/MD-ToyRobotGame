@@ -5,7 +5,7 @@ namespace TRG.Logic.Services.Executers
 {
     internal class PlaceRobotExecuter : ICommandExecuter
     {
-        public string Execute(ref Robot robot, Command command, Grid grid, List<GridPoint> gridData)
+        public string Execute(ref Robot robot, ref List<GridPoint> gridData, Command command, Grid grid)
         {
             var mappedCommand = command as PlaceRobot;
 

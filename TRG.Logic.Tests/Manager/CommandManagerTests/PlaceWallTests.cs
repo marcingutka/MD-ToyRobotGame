@@ -29,7 +29,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceWall(new Position { X = 1, Y = 2 });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             var gridPointForNewWall = gridPoints.Single(point => point.Position.X == command.Position.X && point.Position.Y == command.Position.Y);
@@ -47,7 +47,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceWall(new Position { X = 2, Y = 2 });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             var gridPointForNewWall = gridPoints.Single(point => point.Position.X == command.Position.X && point.Position.Y == command.Position.Y);
@@ -65,7 +65,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceWall(new Position { X = 4, Y = 3 });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.IsTrue(!gridPoints.Any(point => point.Position.X == command.Position.X && point.Position.Y == command.Position.Y));

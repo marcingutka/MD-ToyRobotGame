@@ -28,7 +28,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceRobot(new GridPosition { X = 1, Y = 2, Orientation = OrientationState.North });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.AreEqual(1, robot.Position.X);
@@ -46,7 +46,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceRobot(new GridPosition { X = 1, Y = 2, Orientation = OrientationState.North });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.AreEqual(1, robot.Position.X);
@@ -66,7 +66,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.IsNull(robot);
@@ -82,7 +82,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.AreEqual(1, robot.Position.X);
@@ -102,7 +102,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.AreEqual(2, robot.Position.X);
@@ -120,7 +120,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
             //Act
-            manager.ExecuteCommand(ref robot, command, grid, gridPoints);
+            manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
             Assert.AreEqual(2, robot.Position.X);

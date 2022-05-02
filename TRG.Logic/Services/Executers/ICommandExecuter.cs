@@ -5,6 +5,6 @@ namespace TRG.Logic.Services.Executers
 {
     internal interface ICommandExecuter
     {
-        string Execute(ref Robot robot, Command command, Grid grid, List<GridPoint> gridData);
+        string Execute(ref Robot robot, ref List<GridPoint> gridData, Command command, Grid grid);
     }
 }
