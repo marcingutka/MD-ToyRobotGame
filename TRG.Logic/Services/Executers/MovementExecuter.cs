@@ -15,6 +15,13 @@ namespace TRG.Logic.Services.Executers
                 case MovementCommand.Left:
                     LeftExecuter.Execute(ref robot);
                     break;
+
+                case MovementCommand.Right:
+                    RightExecuter.Execute(ref robot);
+                    break;
+
+                default:
+                    throw new NotSupportedException();
             }
 
             return string.Empty;
