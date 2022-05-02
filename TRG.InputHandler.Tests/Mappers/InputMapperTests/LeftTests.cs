@@ -10,6 +10,8 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
     public class LeftTests
     {
+        private const string COMMAND_TYPE = "LEFT";
+
         private ICommandMapper commandMapper;
         private InputMapper mapper;
 
@@ -27,11 +29,11 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "LEFT";
+            var command = COMMAND_TYPE;
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "LEFT"), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Left));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Left));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -48,11 +50,11 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "LEFT";
+            var command = COMMAND_TYPE;
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "LEFT"), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Left));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Left));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -69,11 +71,11 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "LEFT";
+            var command = COMMAND_TYPE;
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "LEFT"), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Left));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Left));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -90,11 +92,11 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             var grid = new Grid(5, 5);
             var content = new List<string>();
 
-            var command = "LEFT";
+            var command = COMMAND_TYPE;
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "LEFT"), Arg.Is<List<string>>(x => x.Count > 0), Arg.Any<Grid>()).Returns((Movement)null);
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x.Count > 0), Arg.Any<Grid>()).Returns((Movement)null);
 
             //Act
             var commandList = mapper.Map(content, grid);

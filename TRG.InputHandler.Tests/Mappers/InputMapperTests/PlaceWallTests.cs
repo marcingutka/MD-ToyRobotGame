@@ -10,6 +10,8 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
     public class PlaceWallTests
     {
+        private const string COMMAND_TYPE = "PLACE_WALL";
+
         private ICommandMapper commandMapper;
         private InputMapper mapper;
 
@@ -31,7 +33,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" ), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" ), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -52,7 +54,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -73,7 +75,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -94,7 +96,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3"), Arg.Any<Grid>()).Returns(new PlaceWall(new Position { Y = 2, X = 3 }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -115,7 +117,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "6" && x[1] == "3"), Arg.Any<Grid>()).Returns((PlaceWall)null);
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "6" && x[1] == "3"), Arg.Any<Grid>()).Returns((PlaceWall)null);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -135,7 +137,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_WALL"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "6"), Arg.Any<Grid>()).Returns((PlaceWall)null);
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "6"), Arg.Any<Grid>()).Returns((PlaceWall)null);
 
             //Act
             var commandList = mapper.Map(content, grid);

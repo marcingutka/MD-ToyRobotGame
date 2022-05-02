@@ -10,6 +10,8 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 {
     public class PlaceRobotTests
     {
+        private const string COMMAND_TYPE = "PLACE_ROBOT";
+
         private ICommandMapper commandMapper;
         private InputMapper mapper;
 
@@ -31,7 +33,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -52,7 +54,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -73,7 +75,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -94,7 +96,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -115,7 +117,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -136,7 +138,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "EAST"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.East }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "EAST"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.East }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -157,7 +159,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "SOUTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.South }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "SOUTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.South }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -178,7 +180,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "WEST"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.West }));
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "WEST"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.West }));
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -199,7 +201,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "6" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "6" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -219,7 +221,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "6" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "6" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
 
             //Act
             var commandList = mapper.Map(content, grid);
@@ -239,7 +241,7 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
 
             content.Add(command);
 
-            commandMapper.Map(Arg.Is<string>(x => x == "PLACE_ROBOT"), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "CENTER"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "CENTER"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
 
             //Act
             var commandList = mapper.Map(content, grid);
