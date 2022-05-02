@@ -36,8 +36,6 @@ namespace TRG.Logic.Services.Executers
             return (x, y);
         }
 
-
-
         private static bool CheckIfThereIsWall(int x, int y, List<GridPoint> gridData)
         {
             if (gridData is null) return true;
