@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 using TRG.Logic.Manager;
+using TRG.Logic.Tests.Helpers;
 using TRG.Models.Commands;
 using TRG.Models.Enums;
 using TRG.Models.Model;
@@ -22,7 +23,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
             Robot robot = null;
             var command = new PlaceRobot(new GridPosition { X = 1, Y = 2, Orientation = OrientationState.North });
 
@@ -40,8 +41,8 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
-            Robot robot = CreateRobot(4, 3, OrientationState.South);
+            List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
+            Robot robot = CreatorHelper.CreateRobot(4, 3, OrientationState.South);
             var command = new PlaceRobot(new GridPosition { X = 1, Y = 2, Orientation = OrientationState.North });
 
             //Act
@@ -60,7 +61,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
             Robot robot = null;
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
@@ -76,8 +77,8 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
-            Robot robot = CreateRobot(1, 2, OrientationState.North);
+            List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
+            Robot robot = CreatorHelper.CreateRobot(1, 2, OrientationState.North);
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
             //Act
@@ -96,7 +97,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
             Robot robot = null;
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
@@ -114,8 +115,8 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
-            Robot robot = CreateRobot(1, 2, OrientationState.South);
+            List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
+            Robot robot = CreatorHelper.CreateRobot(1, 2, OrientationState.South);
             var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
 
             //Act
@@ -126,11 +127,5 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             Assert.AreEqual(2, robot.Position.Y);
             Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
         }
-
-        private static Robot CreateRobot(int x, int y, OrientationState orientation) =>
-            new() { Position = new GridPosition { X = x, Y = y, Orientation = orientation } };
-
-        private static GridPoint CreateGridPoint(int x, int y, bool isWall) =>
-            new() { Position = new GridPosition { X = x, Y = y }, IsWall = isWall };
     }
 }
