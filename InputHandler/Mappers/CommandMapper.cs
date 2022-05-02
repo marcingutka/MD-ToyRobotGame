@@ -25,6 +25,7 @@ namespace TRG.InputHandler.Mappers
                     AllowedCommands.PLACE_ROBOT => new PlaceRobotMapper(placingValidator, grid),
                     AllowedCommands.PLACE_WALL => new PlaceWallMapper(placingValidator, grid),
                     AllowedCommands.REPORT => new ReportMapper(),
+                    AllowedCommands.MOVE => new MoveMapper(),
                     AllowedCommands.LEFT => new LeftMapper(),
                     _ => throw new NotSupportedException()
                 };
