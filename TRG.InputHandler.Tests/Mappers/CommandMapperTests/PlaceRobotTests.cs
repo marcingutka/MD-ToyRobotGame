@@ -204,7 +204,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
             //Act
             var result = commandMapper.Map(commandType, commandParameters, grid);
 
-            //&& Assert
+            //Assert
             Assert.IsNull(result);
         }
 
