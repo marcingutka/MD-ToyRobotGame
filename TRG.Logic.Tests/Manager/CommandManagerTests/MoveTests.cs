@@ -184,15 +184,15 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             //Arrange
             var grid = new Grid(5, 5);
             List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
-            Robot robot = CreatorHelper.CreateRobot(1, 2, OrientationState.North);
+            Robot robot = CreatorHelper.CreateRobot(2, 1, OrientationState.North);
             var command = new Movement(MovementCommand.Forward);
 
             //Act
             manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
-            Assert.AreEqual(1, robot.Position.X);
-            Assert.AreEqual(2, robot.Position.Y);
+            Assert.AreEqual(2, robot.Position.X);
+            Assert.AreEqual(1, robot.Position.Y);
             Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
         }
     }

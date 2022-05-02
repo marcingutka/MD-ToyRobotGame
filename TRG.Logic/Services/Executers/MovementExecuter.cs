@@ -20,6 +20,10 @@ namespace TRG.Logic.Services.Executers
                     RightExecuter.Execute(ref robot);
                     break;
 
+                case MovementCommand.Forward:
+                    MovetExecuter.Execute(ref robot, gridData, grid);
+                    break;
+
                 default:
                     throw new NotSupportedException();
             }
