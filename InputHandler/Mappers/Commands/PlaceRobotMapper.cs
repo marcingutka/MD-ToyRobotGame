@@ -21,6 +21,8 @@ namespace TRG.InputHandler.Mappers.Commands
         }
         public Command Map(List<string> parameters)
         {
+            if (parameters is null || parameters.Count != 3) return null;
+
             var isRowNumber = int.TryParse(parameters[0], out int row);
             var isColumnNumber = int.TryParse(parameters[1], out int column);
 
