@@ -11,6 +11,8 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
 {
     public class LeftTests
     {
+        private const string COMMAND_TYPE = "LEFT";
+
         private IInputPlacingValidator validator;
         private CommandMapper commandMapper;
 
@@ -25,7 +27,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_Left_Command_Is_Correct_Returns_MovementObject()
         {
             //Arrange
-            var commandType = "LEFT";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = null;
             var grid = new Grid(5, 5);
 
@@ -40,7 +42,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_Left_Command_Is_Correct_Returns_MovementObject_With_Movement_Command_Left()
         {
             //Arrange
-            var commandType = "LEFT";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = null;
             var grid = new Grid(5, 5);
 
@@ -55,8 +57,8 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_Left_Command_Has_Parameters_Returns_Null()
         {
             //Arrange
-            var commandType = "LEFT";
-            List<string> commandParameters = new List<string> { "2" };
+            var commandType = COMMAND_TYPE;
+            List<string> commandParameters = new() { "2" };
             var grid = new Grid(5, 5);
 
             //Act
