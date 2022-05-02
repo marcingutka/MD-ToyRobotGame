@@ -11,6 +11,8 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
 {
     public class PlaceWallTests
     {
+        private const string COMMAND_TYPE = "PLACE_WALL";
+
         private CommandMapper commandMapper;
         private IInputPlacingValidator validator;
 
@@ -25,7 +27,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Command_Is_Correct_Returns_CorrectPlaceWallCommandType()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "3" };
             var grid = new Grid(5, 5);
 
@@ -42,7 +44,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Command_Is_Correct_Returns_CorrectPlaceWallObject()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "3" };
             var grid = new Grid(5, 5);
 
@@ -59,7 +61,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Command_Is_Correct_Returns_CorrectPlacementRow()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "3" };
             var grid = new Grid(5, 5);
 
@@ -76,7 +78,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Command_Is_Correct_Returns_CorrectPlacementColumn()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "3" };
             var grid = new Grid(5, 5);
 
@@ -93,7 +95,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Command_Has_Invalid_Row_Returns_Null()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "6", "3" };
             var grid = new Grid(5, 5);
 
@@ -110,7 +112,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Command_Has_Invalid_Column_Returns_Null()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "6" };
             var grid = new Grid(5, 5);
 
@@ -127,7 +129,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Has_No_Command_Returns_Null()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = null;
             var grid = new Grid(5, 5);
 
@@ -144,7 +146,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Has_One_Command_Returns_Null()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2" }; ;
             var grid = new Grid(5, 5);
 
@@ -161,7 +163,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Has_More_Than_2_Commands_Returns_Null()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "3", "4" }; ;
             var grid = new Grid(5, 5);
 
@@ -178,7 +180,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_PlaceWall_Has_Invalid_Formatted_Commands_Returns_Null()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "TEST", "3" }; ;
             var grid = new Grid(5, 5);
 
@@ -195,7 +197,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         public void Map_When_CommandType_Is_PlaceWall_PlacingValidator_Is_Called_Once()
         {
             //Arrange
-            var commandType = "PLACE_WALL";
+            var commandType = COMMAND_TYPE;
             List<string> commandParameters = new() { "2", "3" };
             var grid = new Grid(5, 5);
 
