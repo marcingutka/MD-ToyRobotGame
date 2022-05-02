@@ -17,14 +17,22 @@ namespace TRG.InputHandler.Mappers
 
         public Command Map(string commandType, List<string> parameters, Grid grid)
         {
-            IMapCommand mapper = commandType switch
+            Command command = null;
+            try
             {
-                AllowedCommands.PLACE_ROBOT => new PlaceRobotMapper(placingValidator, grid),
-                AllowedCommands.PLACE_WALL => new PlaceWallMapper(),
-                _ => throw new NotSupportedException()
-            };
+                IMapCommand mapper = commandType switch
+                {
+                    AllowedCommands.PLACE_ROBOT => new PlaceRobotMapper(placingValidator, grid),
+                    AllowedCommands.PLACE_WALL => new PlaceWallMapper(),
+                    _ => throw new NotSupportedException()
+                };
 
-            return mapper.Map(parameters);
+                command = mapper.Map(parameters);
+            }
+            catch (NotSupportedException)
+            { }
+
+            return command;
         }
     }
 }
