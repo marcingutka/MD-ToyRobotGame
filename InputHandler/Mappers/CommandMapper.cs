@@ -18,6 +18,7 @@ namespace TRG.InputHandler.Mappers
         public Command Map(string commandType, List<string> parameters, Grid grid)
         {
             Command command = null;
+
             try
             {
                 IMapCommand mapper = commandType switch
