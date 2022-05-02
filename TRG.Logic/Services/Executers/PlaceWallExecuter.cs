@@ -27,7 +27,7 @@ namespace TRG.Logic.Services.Executers
                 }
             }
 
-            return null;
+            return string.Empty;
         }
     }
 }

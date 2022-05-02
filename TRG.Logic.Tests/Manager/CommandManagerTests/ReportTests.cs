@@ -30,7 +30,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var result = manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
-            Assert.IsNull(result);
+            Assert.IsTrue(string.IsNullOrEmpty(result));
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             //Arrange
             var grid = new Grid(5, 5);
             List<GridPoint> gridPoints = new() { CreatorHelper.CreateGridPoint(2, 2, true) };
-            Robot robot = null;
+            Robot robot = CreatorHelper.CreateRobot(3, 2, Models.Enums.OrientationState.North);
             var command = new Report();
 
             //Act

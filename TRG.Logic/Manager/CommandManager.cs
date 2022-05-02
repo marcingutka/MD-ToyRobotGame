@@ -13,6 +13,7 @@ namespace TRG.Logic.Manager
             {
                 CommandType.PlaceRobot => new PlaceRobotExecuter(),
                 CommandType.PlaceWall => new PlaceWallExecuter(),
+                CommandType.Report => new ReportExecuter(),
                 _ => throw new NotSupportedException(),
             };
 
