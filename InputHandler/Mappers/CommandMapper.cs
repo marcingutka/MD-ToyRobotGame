@@ -27,6 +27,7 @@ namespace TRG.InputHandler.Mappers
                     AllowedCommands.REPORT => new ReportMapper(),
                     AllowedCommands.MOVE => new MoveMapper(),
                     AllowedCommands.LEFT => new LeftMapper(),
+                    AllowedCommands.RIGHT => new RightMapper(),
                     _ => throw new NotSupportedException()
                 };
 
