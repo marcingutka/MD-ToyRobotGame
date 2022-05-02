@@ -8,7 +8,14 @@ namespace TRG.Logic.Services.Executers
     {
         public string Execute(ref Robot robot, ref List<GridPoint> gridData, Command command, Grid grid)
         {
+            var mappedCommand = command as Movement;
 
+            switch (mappedCommand.MovementCommand)
+            {
+                case MovementCommand.Left:
+                    LeftExecuter.Execute(ref robot);
+                    break;
+            }
 
             return string.Empty;
         }
