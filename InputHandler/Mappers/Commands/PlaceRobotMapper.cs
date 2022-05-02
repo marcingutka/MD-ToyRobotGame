@@ -8,11 +8,11 @@ namespace TRG.InputHandler.Mappers.Commands
 {
     internal class PlaceRobotMapper : IMapCommand
     {
-        private readonly IInputPlacingValidator validator;
+        private readonly IInputPositionValidator validator;
         private readonly Grid grid;
 
         public PlaceRobotMapper(
-            IInputPlacingValidator validator,
+            IInputPositionValidator validator,
             Grid grid
             )
         {

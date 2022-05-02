@@ -8,9 +8,9 @@ namespace TRG.InputHandler.Mappers
 {
     public class CommandMapper : ICommandMapper
     {
-        private readonly IInputPlacingValidator placingValidator;
+        private readonly IInputPositionValidator placingValidator;
 
-        public CommandMapper(IInputPlacingValidator placingValidator)
+        public CommandMapper(IInputPositionValidator placingValidator)
         {
             this.placingValidator = placingValidator;
         }

@@ -6,11 +6,11 @@ namespace TRG.InputHandler.Mappers.Commands
 {
     internal class PlaceWallMapper : IMapCommand
     {
-        private readonly IInputPlacingValidator validator;
+        private readonly IInputPositionValidator validator;
         private readonly Grid grid;
 
         public PlaceWallMapper(
-            IInputPlacingValidator validator,
+            IInputPositionValidator validator,
             Grid grid
             )
         {

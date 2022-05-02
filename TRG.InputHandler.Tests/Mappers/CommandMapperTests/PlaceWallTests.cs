@@ -14,12 +14,12 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         private const string COMMAND_TYPE = "PLACE_WALL";
 
         private CommandMapper commandMapper;
-        private IInputPlacingValidator validator;
+        private IInputPositionValidator validator;
 
         [SetUp]
         public void Setup()
         {
-            validator = Substitute.For<IInputPlacingValidator>();
+            validator = Substitute.For<IInputPositionValidator>();
             this.commandMapper = new CommandMapper(validator);
         }
 

@@ -3,7 +3,7 @@ using TRG.Models.Model;
 
 namespace TRG.InputHandler.Validators
 {
-    public class InputPlacingValidator : IInputPlacingValidator
+    public class InputPositionValidator : IInputPositionValidator
     {
         public bool Validate(Grid grid, int row, int col)
         {

@@ -2,7 +2,7 @@
 
 namespace TRG.InputHandler.Validators
 {
-    public interface IInputPlacingValidator
+    public interface IInputPositionValidator
     {
         bool Validate(Grid grid, int row, int col);
     }

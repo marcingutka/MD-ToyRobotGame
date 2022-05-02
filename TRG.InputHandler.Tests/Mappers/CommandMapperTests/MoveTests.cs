@@ -13,13 +13,13 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
     {
         private const string COMMAND_TYPE = "MOVE";
 
-        private IInputPlacingValidator validator;
+        private IInputPositionValidator validator;
         private CommandMapper commandMapper;
 
         [SetUp]
         public void Setup()
         {
-            validator = Substitute.For<IInputPlacingValidator>();
+            validator = Substitute.For<IInputPositionValidator>();
             this.commandMapper = new CommandMapper(validator);
         }
 
