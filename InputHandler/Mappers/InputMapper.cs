@@ -29,11 +29,11 @@ namespace TRG.InputHandler.Mappers
                 var commandName = splitedCommand[0];
                 var commandParameters = splitedCommand.Length > 1 ? splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList() : null;
 
-                var commandObj = this.commandMapper.Map(commandName, commandParameters, grid);
+                var mappedCommand = this.commandMapper.Map(commandName, commandParameters, grid);
 
-                if (commandObj is not null)
+                if (mappedCommand is not null)
                 {
-                    commandList.Add(commandObj);
+                    commandList.Add(mappedCommand);
                 }
 
                 /*try
