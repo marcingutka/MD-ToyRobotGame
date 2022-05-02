@@ -5,7 +5,7 @@ using TRG.Models.Model;
 
 namespace TRG.InputHandler.Tests.Validators
 {
-    public class InputPlacingValidatorTests
+    public class InputPositionValidatorTests
     {
         private InputPositionValidator validator;
 
