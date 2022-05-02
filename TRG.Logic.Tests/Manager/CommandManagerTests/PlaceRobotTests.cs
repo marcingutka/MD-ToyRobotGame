@@ -18,11 +18,11 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
         }
 
         [Test]
-        public void Execute_When_PlaceRobot_Command_And_Point_Is_Not_Wall_Set_Robot_X_To_Provided_Value()
+        public void Execute_WHEN_PlaceRobot_Command_AND_There_Is_No_Robot_AND_Point_Do_Not_Have_Wall_SET_Robot_Position_To_Provided_State()
         {
             //Arrange
             var grid = new Grid(5, 5);
-            List<GridPoint> gridPoints = new() { new GridPoint { Position = new Position { X = 2, Y = 2 }, IsWall = true } };
+            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
             Robot robot = null;
             var command = new PlaceRobot(new GridPosition { X = 1, Y = 2, Orientation = OrientationState.North });
 
@@ -31,6 +31,106 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
 
             //Assert
             Assert.AreEqual(1, robot.Position.X);
+            Assert.AreEqual(2, robot.Position.Y);
+            Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
         }
+
+        [Test]
+        public void Execute_WHEN_PlaceRobot_Command_AND_There_Is_Robot_AND_Point_Do_Not_Have_Wall_SET_Robot_Position_To_Provided_State()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            Robot robot = CreateRobot(4, 3, OrientationState.South);
+            var command = new PlaceRobot(new GridPosition { X = 1, Y = 2, Orientation = OrientationState.North });
+
+            //Act
+            manager.ExecuteCommand(grid, gridPoints, robot, command);
+
+            //Assert
+            Assert.AreEqual(1, robot.Position.X);
+            Assert.AreEqual(2, robot.Position.Y);
+            Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
+        }
+
+        //To clarify what happens when we put PLACE_ROBOT to the point, where a wall exist
+
+        /*[Test]
+        public void Execute_WHEN_PlaceRobot_Command_AND_There_Is_No_Robot_AND_Point_Has_Wall_DO_NOT_Change_Robot_Position()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            Robot robot = null;
+            var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
+
+            //Act
+            manager.ExecuteCommand(grid, gridPoints, robot, command);
+
+            //Assert
+            Assert.IsNull(robot);
+        }
+
+        [Test]
+        public void Execute_WHEN_PlaceRobot_Command_AND_There_Is_Robot_AND_Point_Has_Wall_DO_NOT_Change_Robot_Position()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            Robot robot = CreateRobot(1, 2, OrientationState.North);
+            var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
+
+            //Act
+            manager.ExecuteCommand(grid, gridPoints, robot, command);
+
+            //Assert
+            Assert.AreEqual(1, robot.Position.X);
+            Assert.AreEqual(2, robot.Position.Y);
+            Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
+        }*/
+
+
+        //Following 2 tests are replacing above 2 tests -> depends on requirements
+        [Test]
+        public void Execute_WHEN_PlaceRobot_Command_AND_There_Is_No_Robot_AND_Point_Has_Wall_SET_Robot_Position_To_Provided_State()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            Robot robot = null;
+            var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
+
+            //Act
+            manager.ExecuteCommand(grid, gridPoints, robot, command);
+
+            //Assert
+            Assert.AreEqual(2, robot.Position.X);
+            Assert.AreEqual(2, robot.Position.Y);
+            Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
+        }
+
+        [Test]
+        public void Execute_WHEN_PlaceRobot_Command_AND_There_Is_Robot_AND_Point_Has_Wall_SET_Robot_Position_To_Provided_State()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            List<GridPoint> gridPoints = new() { CreateGridPoint(2, 2, true) };
+            Robot robot = CreateRobot(1, 2, OrientationState.South);
+            var command = new PlaceRobot(new GridPosition { X = 2, Y = 2, Orientation = OrientationState.North });
+
+            //Act
+            manager.ExecuteCommand(grid, gridPoints, robot, command);
+
+            //Assert
+            Assert.AreEqual(2, robot.Position.X);
+            Assert.AreEqual(2, robot.Position.Y);
+            Assert.AreEqual(OrientationState.North, robot.Position.Orientation);
+        }
+
+        private static Robot CreateRobot(int x, int y, OrientationState orientation) =>
+            new() { Position = new GridPosition { X = x, Y = y, Orientation = orientation } };
+
+        private static GridPoint CreateGridPoint(int x, int y, bool isWall) =>
+            new() { Position = new GridPosition { X = x, Y = y }, IsWall = isWall };
     }
 }
