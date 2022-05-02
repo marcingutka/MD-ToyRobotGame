@@ -193,7 +193,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
         }
 
         [Test]
-        public void Map_When_PlaceRobot_Command_Has_Invalid_Facing_Throws_NotSupportedException()
+        public void Map_When_PlaceRobot_Command_Has_Invalid_Facing_Returns_Null()
         {
             //Arrange
             var commandType = "PLACE_ROBOT";
@@ -202,8 +202,11 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
 
             validator.Validate(default, default, default).ReturnsForAnyArgs(true);
 
-            //Act && Assert
-            Assert.Throws<NotSupportedException>(() => commandMapper.Map(commandType, commandParameters, grid));
+            //Act
+            var result = commandMapper.Map(commandType, commandParameters, grid);
+
+            //&& Assert
+            Assert.IsNull(result);
         }
 
         [Test]
