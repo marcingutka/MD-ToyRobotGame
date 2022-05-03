@@ -36,7 +36,14 @@ namespace TRG.Logic.Manager
         {
             if (grid is null) throw new Exception("Game Manager is not configured.");
 
-            return commandManager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
+            try
+            {
+                return commandManager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
+            }
+            catch (NotSupportedException)
+            {
+                return $"Command type: {command.CommandType} is not supported";
+            }
         }
 
         public void Clear()
