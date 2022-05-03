@@ -32,8 +32,8 @@ namespace TRG.InputHandler.Mappers.Commands
                 return new PlaceRobot(
                     new GridPosition
                     {
-                        Y = int.Parse(parameters[0]),
-                        X = int.Parse(parameters[1]),
+                        X = int.Parse(parameters[0]),
+                        Y = int.Parse(parameters[1]),
                         Orientation = MapFacing(parameters[2])
                     }
                     );

@@ -30,8 +30,8 @@ namespace TRG.InputHandler.Mappers.Commands
                 return new PlaceWall(
                 new Position
                 {
-                    Y = int.Parse(parameters[0]),
-                    X = int.Parse(parameters[1])
+                    X = int.Parse(parameters[0]),
+                    Y = int.Parse(parameters[1])
                 }
                 );
             }
