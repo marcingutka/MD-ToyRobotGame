@@ -13,8 +13,8 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InputHandler\TRG.InputHandler.csproj" />
     <ProjectReference Include="..\TRG.FileHandler\TRG.FileHandler.csproj" />
+    <ProjectReference Include="..\TRG.InputHandler\TRG.InputHandler.csproj" />
     <ProjectReference Include="..\TRG.Logic\TRG.Logic.csproj" />
   </ItemGroup>
 
