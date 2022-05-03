@@ -14,4 +14,10 @@
 	  <ProjectReference Include="..\TRG.Models\TRG.Models.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Services\Executers\MoveExecuter.cs">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
