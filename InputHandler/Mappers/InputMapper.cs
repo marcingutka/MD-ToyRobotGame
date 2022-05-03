@@ -47,7 +47,7 @@ namespace TRG.InputHandler.Mappers
                 return mappedCommand;
             }
 
-            return null;
+            throw new FormatException("Wrong command format");
         }
     }
 }

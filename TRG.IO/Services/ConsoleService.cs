@@ -20,6 +20,11 @@ namespace TRG.IO.Services
 
         public void HandleInput(string command, Grid grid)
         {
+            if (string.IsNullOrEmpty(command))
+            {
+                return;
+            }
+
             if (command == "CLEAR")
             {
                 gameManager.Clear();

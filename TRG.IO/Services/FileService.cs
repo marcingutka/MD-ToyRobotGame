@@ -31,21 +31,28 @@ namespace TRG.IO.Services
             }
 
             var readCommands = filehandler.ReadFile(filePath);
-            
-            var mappedCommands = mapper.Map(readCommands, grid);
 
-            gameManager.ConfigureManager(grid);
-            var results = gameManager.ExecuteCommands(mappedCommands);
-
-            foreach (var result in results)
+            try
             {
-                if (!string.IsNullOrEmpty(result))
-                {
-                    Console.WriteLine(result);
-                }
-            }
+                var mappedCommands = mapper.Map(readCommands, grid);
 
-            Console.ReadLine();
+                gameManager.ConfigureManager(grid);
+                var results = gameManager.ExecuteCommands(mappedCommands);
+
+                foreach (var result in results)
+                {
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        Console.WriteLine(result);
+                    }
+                }
+
+                Console.ReadLine();
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("At least one of the command has incorrect format");
+            }
         }
     }
 }

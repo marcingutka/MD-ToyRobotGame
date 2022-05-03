@@ -21,11 +21,11 @@ namespace TRG.Logic.Manager
             this.grid = grid;
         }
 
-        public List<string> ExecuteCommands(List<Command> commends)
+        public List<string> ExecuteCommands(List<Command> commands)
         {
             var results = new List<string>();
 
-            foreach (var command in commends)
+            foreach (var command in commands)
             {
                 results.Add(ExecuteCommand(command));
             }
@@ -35,7 +35,8 @@ namespace TRG.Logic.Manager
 
         public string ExecuteCommand(Command command)
         {
-            if (grid is null) throw new FormatException("Game Manager is not configured.");
+            if (grid is null) throw new NullReferenceException("Game Manager is not configured.");
+            if (command is null) throw new NullReferenceException("No command has been provided.");
 
             try
             {
