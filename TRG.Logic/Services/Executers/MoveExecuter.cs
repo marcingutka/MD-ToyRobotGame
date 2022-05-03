@@ -3,7 +3,7 @@ using TRG.Models.Model;
 
 namespace TRG.Logic.Services.Executers
 {
-    internal class MovetExecuter
+    internal class MoveExecuter
     {
         public static void Execute(ref Robot robot, List<GridPoint> gridData, Grid grid)
         {

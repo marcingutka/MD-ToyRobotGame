@@ -21,7 +21,7 @@ namespace TRG.Logic.Services.Executers
                     break;
 
                 case MovementCommand.Forward:
-                    MovetExecuter.Execute(ref robot, gridData, grid);
+                    MoveExecuter.Execute(ref robot, gridData, grid);
                     break;
 
                 default:
