@@ -14,7 +14,7 @@ REPORT
 MOVE
 REPORT
 
-// Expected output:
+// Expected output (for 5x5):
 // 2,2,EAST
 // 5,3,EAST
 // 5,3,EAST

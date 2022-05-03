@@ -2,5 +2,5 @@ PLACE_ROBOT 1,1,WEST
 MOVE
 REPORT
 
-// Expected output:
+// Expected output (5x5):
 // 5,1,WEST

@@ -6,3 +6,6 @@ LEFT
 LEFT
 MOVE
 REPORT
+
+//Expected output:
+// 3,2,EAST

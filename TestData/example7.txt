@@ -1,0 +1,6 @@
+PLACE_ROBOT 1,1,SOUTH
+MOVE
+REPORT
+
+// Expected output for (5x5):
+// 1,5,SOUTH
