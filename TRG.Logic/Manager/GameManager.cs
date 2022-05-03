@@ -22,7 +22,14 @@ namespace TRG.Logic.Manager
 
         public List<string> ExecuteCommands(List<Command> commends)
         {
-            throw new NotImplementedException();
+            var results = new List<string>();
+
+            foreach (var command in commends)
+            {
+                results.Add(ExecuteCommand(command));
+            }
+
+            return results;
         }
 
         public string ExecuteCommand(Command command)
