@@ -20,12 +20,12 @@ namespace TRG.Logic.Manager
             throw new NotImplementedException();
         }
 
-        public void AssignAllCommends(List<Command> commends)
+        public List<string> ExecuteCommends(List<Command> commends)
         {
             throw new NotImplementedException();
         }
 
-        public void AddCommand(Command command)
+        public string ExecuteCommand(Command command)
         {
             throw new NotImplementedException();
         }

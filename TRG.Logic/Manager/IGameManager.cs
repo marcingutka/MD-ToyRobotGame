@@ -6,8 +6,8 @@ namespace TRG.Logic.Manager
     public interface IGameManager
     {
         void ConfigureManager(Grid grid);
-        void AssignAllCommends(List<Command> commends);
-        void AddCommand(Command command);
+        List<string> ExecuteCommends(List<Command> commends);
+        string ExecuteCommand(Command command);
         void Clear();
     }
 }
