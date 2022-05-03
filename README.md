@@ -2,6 +2,7 @@
    This is console app repository for analyizing Robots behaviour.
    
 <b>2. Input</b>  
+   The defined grid size is 5x5 (but it can be manipulated by changing data in appsettings.json file in TRG.IO project).
    It is possible to upload data as a .txt file or type commands manually in console window.
    
 <b>3. Output</b>  
