@@ -9,7 +9,7 @@ namespace TRG.InputHandler.Validators
         {
             if (grid is null) return false;
 
-            return row > 0 && col > 0 && row <= grid.Y && col <= grid.X;
+            return row > 0 && col > 0 && row <= grid.X && col <= grid.Y;
         }
     }
 }
