@@ -9,7 +9,7 @@ namespace TRG.Logic.Manager
 
         private Grid grid;
         private Robot robot;
-        private List<GridPoint> points = new();
+        private List<GridPoint> gridPoints = new();
 
         public GameManager(ICommandManager commandManager)
         {
