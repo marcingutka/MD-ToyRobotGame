@@ -13,19 +13,42 @@ var provider = services.BuildServiceProvider();
 
 var (fileService, consoleService) = StartUp.GetServices(provider);
 
-Console.WriteLine($"Provide full path to the txt file or type command:");
-var input = Console.ReadLine();
+var input = string.Empty;
 
-if(TextCommands.Commands.Contains(input.Split(' ')[0]))
+while (input.ToUpper() != TextCommands.END)
 {
-    while(input.ToUpper() != "END")
+    Console.WriteLine($"1. Upload file");
+    Console.WriteLine($"2. Type commands manually");
+    Console.WriteLine($"0. Stop application");
+    Console.WriteLine();
+
+    Console.WriteLine($"Choose the action (type number): ");
+    input = Console.ReadLine();
+
+    Console.Clear();
+
+    if (input == TextCommands.TYPE_MANUALLY)
     {
-        consoleService.HandleInput(input);
-        Console.WriteLine("Provide next command or clear data by typing 'CLEAR' command or end run by providing 'END' command:");
+        Console.WriteLine($"Type command or type 'BACK' to come back to home screen");
         input = Console.ReadLine();
+        while (input.ToUpper() != TextCommands.BACK)
+        {
+            consoleService.HandleInput(input);
+            Console.WriteLine("Provide next command or clear data by typing 'CLEAR' command or end run by providing 'END' command:");
+            input = Console.ReadLine();
+        }
+        consoleService.HandleInput(TextCommands.CLEAR);
     }
-}
-else
-{
-    fileService.HandleInput(input);
+    else if (input == TextCommands.UPLOAD_FILE)
+    {
+        Console.WriteLine($"Provide full file path: ");
+        input = Console.ReadLine();
+        while (input.ToUpper() != TextCommands.BACK)
+        {
+            fileService.HandleInput(input);
+            Console.WriteLine("Provide next file path or type 'END' to come back to home screen");
+            input = Console.ReadLine();
+        }
+    }
+    Console.Clear();
 }

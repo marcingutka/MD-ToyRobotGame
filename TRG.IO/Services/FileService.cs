@@ -51,8 +51,6 @@ namespace TRG.IO.Services
                         Console.WriteLine(result);
                     }
                 }
-
-                Console.ReadLine();
             }
             catch (FormatException)
             {

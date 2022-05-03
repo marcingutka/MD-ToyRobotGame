@@ -29,7 +29,7 @@ namespace TRG.IO.Services
                 return;
             }
 
-            if (command == "CLEAR")
+            if (command == TextCommands.CLEAR)
             {
                 gameManager.Clear();
                 return;
