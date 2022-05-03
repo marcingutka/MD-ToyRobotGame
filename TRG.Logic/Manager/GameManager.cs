@@ -20,7 +20,7 @@ namespace TRG.Logic.Manager
             throw new NotImplementedException();
         }
 
-        public List<string> ExecuteCommends(List<Command> commends)
+        public List<string> ExecuteCommands(List<Command> commends)
         {
             throw new NotImplementedException();
         }
