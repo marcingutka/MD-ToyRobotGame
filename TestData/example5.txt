@@ -1,0 +1,8 @@
+PLACE_WALL 1,1
+PLACE_ROBOT 1,1,EAST
+REPORT
+
+
+// Expected output:
+// Chosen coordinates for placing robot are occupied by wall
+// empty string
