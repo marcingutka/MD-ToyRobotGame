@@ -19,7 +19,7 @@ var input = Console.ReadLine();
 
 if(TextCommands.Commands.Contains(input.Split(' ')[0]))
 {
-    while(input.ToUpper() != "CLEAR" && input.ToUpper() != "END")
+    while(input.ToUpper() != "END")
     {
         consoleService.HandleInput(input, grid);
         Console.WriteLine("Provide next command or clear data by typing 'CLEAR' command or end run by providing 'END' command:");

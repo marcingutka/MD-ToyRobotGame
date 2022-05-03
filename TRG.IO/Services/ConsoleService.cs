@@ -17,9 +17,35 @@ namespace TRG.IO.Services
             this.mapper = mapper;
             this.gameManager = gameManager;
         }
+
         public void HandleInput(string command, Grid grid)
         {
+            if (command == "CLEAR")
+            {
+                gameManager.Clear();
+                return;
+            }
 
+            try
+            {
+                var mappedCommand = mapper.Map(command, grid);
+
+                if (!gameManager.IsConfigured())
+                {
+                    gameManager.ConfigureManager(grid);
+                }
+
+                var result = gameManager.ExecuteCommand(mappedCommand);
+
+                if (!string.IsNullOrEmpty(result))
+                {
+                    Console.WriteLine(result);
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Provided command has incorrect format");
+            }
         }
     }
 }

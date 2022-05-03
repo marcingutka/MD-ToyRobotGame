@@ -8,6 +8,7 @@ namespace TRG.Logic.Manager
         void ConfigureManager(Grid grid);
         List<string> ExecuteCommands(List<Command> commends);
         string ExecuteCommand(Command command);
+        bool IsConfigured();
         void Clear();
     }
 }

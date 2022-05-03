@@ -15,6 +15,7 @@ namespace TRG.Logic.Manager
         {
             this.commandManager = commandManager;
         }
+
         public void ConfigureManager(Grid grid)
         {
             this.grid = grid;
@@ -34,7 +35,7 @@ namespace TRG.Logic.Manager
 
         public string ExecuteCommand(Command command)
         {
-            if (grid is null) throw new Exception("Game Manager is not configured.");
+            if (grid is null) throw new FormatException("Game Manager is not configured.");
 
             try
             {
@@ -45,6 +46,9 @@ namespace TRG.Logic.Manager
                 return $"Command type: {command.CommandType} is not supported";
             }
         }
+
+        public bool IsConfigured() =>
+            grid is not null;
 
         public void Clear()
         {
