@@ -14,7 +14,7 @@ var provider = services.BuildServiceProvider();
 var fileService = StartUp.GetServices(provider);
 var grid = StartUp.GetGrid(configuration);
 
-Console.WriteLine($"Provide full path to the txt file or type command");
+Console.WriteLine($"Provide full path to the txt file or type command:");
 var input = Console.ReadLine();
 
 if(TextCommands.Commands.Contains(input.Split(' ')[0]))

@@ -15,6 +15,7 @@ namespace TRG.IO.DI
             InputHandlerDI.ConfigureServices(services);
 
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IConsoleService, ConsoleService>();
         }
     }
 }
