@@ -17,19 +17,19 @@ var input = string.Empty;
 
 while (input.ToUpper() != TextCommands.END)
 {
-    Console.WriteLine($"1. Upload file");
-    Console.WriteLine($"2. Type commands manually");
-    Console.WriteLine($"0. Stop application");
+    Console.WriteLine("1. Upload file");
+    Console.WriteLine("2. Type commands manually");
+    Console.WriteLine("0. Stop application");
     Console.WriteLine();
 
-    Console.WriteLine($"Choose the action (type number): ");
+    Console.WriteLine("Choose the action (type number): ");
     input = Console.ReadLine();
 
     Console.Clear();
 
     if (input == TextCommands.UPLOAD_FILE)
     {
-        Console.WriteLine($"Provide full file path: ");
+        Console.WriteLine("Provide full file path: ");
         input = Console.ReadLine();
         input = input.Replace(".txt", string.Empty) + ".txt";
 
@@ -39,7 +39,7 @@ while (input.ToUpper() != TextCommands.END)
     }
     else if (input == TextCommands.TYPE_MANUALLY)
     {
-        Console.WriteLine($"Type command or type 'BACK' to come back to home screen");
+        Console.WriteLine("Type command or type 'BACK' to come back to home screen");
         input = Console.ReadLine();
         while (input.ToUpper() != TextCommands.BACK)
         {
