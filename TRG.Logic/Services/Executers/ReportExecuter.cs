@@ -10,7 +10,7 @@ namespace TRG.Logic.Services.Executers
         {
             if (robot is null) return string.Empty;
 
-            return $"{robot.Position.Y},{robot.Position.X},{robot.Position.Orientation.ToLongString()}";
+            return $"{robot.Position.X},{robot.Position.Y},{robot.Position.Orientation.ToLongString()}";
         }
     }
 }
