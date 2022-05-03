@@ -5,15 +5,16 @@
    The defined grid size is 5x5 (but it can be manipulated by changing data in appsettings.json file in TRG.IO project).
    It is possible to upload data as a .txt file or type commands manually in console window.
    
-   Allowed Robot Commends:
-   PLACE_ROBOT ROW,COL,FACING
-   PLACE_WALL ROW,COL
-   REPORT
-   MOVE
-   LEFT
-   RIGHT
+   Allowed Robot Commends:  
+   PLACE_ROBOT ROW,COL,FACING  
+   PLACE_WALL ROW,COL  
+   REPORT  
+   MOVE  
+   LEFT  
+   RIGHT  
    
    where ROW and COL are integers value and FACING is one of the following: NORTH, SOUTH, EAST, WEST
+   
 <b>3. Output</b>  
    The console line is output of this application, whenever the command REPORT is called.
    
