@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using TRG.Logic.Manager;
 using TRG.Logic.Messages;
 using TRG.Logic.Tests.Helpers;
@@ -93,6 +94,64 @@ namespace TRG.Logic.Tests.Manager
 
             //Assert
             Assert.AreEqual(Responses.COORDINATES_ARE_OCCUPIED_BY_WALL, result);
+        }
+
+        [Test]
+        public void ExecuteCommands_WHEN_First_Command_Is_Place_Robot_And_Second_Is_Report_And_Robot_Exist_Returns_Robot_Position()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var placeRobotCommand = CreatorHelper.CreatePlaceRobotCommand(1, 1, Models.Enums.OrientationState.North);
+            var reportCommand = new Report();
+
+            List<Command> commands = new() { placeRobotCommand, reportCommand };
+
+            manager.ConfigureManager(grid);
+
+            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Any<List<GridPoint>>(), Arg.Is<Command>(x => x is PlaceRobot), grid)
+                .Returns(x =>
+                {
+                    x[0] = CreatorHelper.CreateRobot(1, 1, Models.Enums.OrientationState.North);
+                    return string.Empty;
+                });
+
+            commandManager.ExecuteCommand(ref Arg.Is<Robot>(x => x.Position.X == 1 && x.Position.Y == 1 && x.Position.Orientation == Models.Enums.OrientationState.North), ref Arg.Any<List<GridPoint>>(), Arg.Is<Command>(x => x is Report), grid)
+                .Returns("1,1,NORTH");
+
+            //Act
+            var result = manager.ExecuteCommands(commands);
+
+            //Assert
+            Assert.AreEqual("1,1,NORTH", result.FirstOrDefault(x => !string.IsNullOrEmpty(x)));
+        }
+
+        [Test]
+        public void ExecuteCommands_WHEN_First_Command_Is_Place_Wall_And_Second_Is_Place_Robot_In_The_Same_Coordindates_Returns_Message()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var placeWallCommand = CreatorHelper.CreatePlaceWallCommand(1, 1);
+            var placeRobotCommand = CreatorHelper.CreatePlaceRobotCommand(1, 1, Models.Enums.OrientationState.North);
+
+            List<Command> commands = new() { placeWallCommand, placeRobotCommand };
+
+            manager.ConfigureManager(grid);
+
+            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Any<List<GridPoint>>(), Arg.Is<Command>(x => x is PlaceWall), grid)
+                .Returns(x =>
+                {
+                    x[1] = new List<GridPoint> { CreatorHelper.CreateGridPoint(1, 1, true) };
+                    return string.Empty;
+                });
+
+            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Is<List<GridPoint>>(x => x[0].Position.X == 1 && x[0].Position.Y == 1 && x[0].IsWall), Arg.Is<Command>(x => x is PlaceRobot), grid)
+                .Returns(Responses.COORDINATES_ARE_OCCUPIED_BY_WALL);
+
+            //Act
+            var result = manager.ExecuteCommands(commands);
+
+            //Assert
+            Assert.AreEqual(Responses.COORDINATES_ARE_OCCUPIED_BY_WALL, result.FirstOrDefault(x => !string.IsNullOrEmpty(x)));
         }
     }
 }
