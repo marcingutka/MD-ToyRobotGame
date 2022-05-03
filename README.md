@@ -17,4 +17,4 @@
    b) compile application and run it
 
 <b>5. Run application</b>    
-  Test files are prepared in TestData dictionary
+  Test files are prepared in TestData directory
