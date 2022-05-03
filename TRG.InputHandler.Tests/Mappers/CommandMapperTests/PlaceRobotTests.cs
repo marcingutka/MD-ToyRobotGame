@@ -71,7 +71,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
             var result = commandMapper.Map(commandType, commandParameters, grid) as PlaceRobot;
 
             //Assert
-            Assert.AreEqual(2, result.Position.Y);
+            Assert.AreEqual(3, result.Position.Y);
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace TRG.InputHandler.Tests.Mappers.CommandMapperTests
             var result = commandMapper.Map(commandType, commandParameters, grid) as PlaceRobot;
 
             //Assert
-            Assert.AreEqual(3, result.Position.X);
+            Assert.AreEqual(2, result.Position.X);
         }
 
         [Test]

@@ -46,7 +46,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
             var result = manager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
 
             //Assert
-            Assert.AreEqual("2,3,NORTH", result);
+            Assert.AreEqual("3,2,NORTH", result);
         }
     }
 }
