@@ -33,30 +33,22 @@ namespace TRG.IO.Services
             {
                 Console.WriteLine($"The file does not exist (path: {filePath})");
                 Console.WriteLine($"You will be moved to home screen");
-                Console.ReadLine();
                 return;
             }
 
             var readCommands = filehandler.ReadFile(filePath);
 
-            try
+            var mappedCommands = mapper.Map(readCommands, gameGrid);
+
+            gameManager.ConfigureManager(gameGrid);
+            var results = gameManager.ExecuteCommands(mappedCommands);
+
+            foreach (var result in results)
             {
-                var mappedCommands = mapper.Map(readCommands, gameGrid);
-
-                gameManager.ConfigureManager(gameGrid);
-                var results = gameManager.ExecuteCommands(mappedCommands);
-
-                foreach (var result in results)
+                if (!string.IsNullOrEmpty(result))
                 {
-                    if (!string.IsNullOrEmpty(result))
-                    {
-                        Console.WriteLine(result);
-                    }
+                    Console.WriteLine(result);
                 }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("At least one of the command has incorrect format");
             }
         }
     }

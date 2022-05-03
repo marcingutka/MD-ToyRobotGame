@@ -35,25 +35,23 @@ namespace TRG.IO.Services
                 return;
             }
 
-            try
+            var mappedCommand = mapper.Map(command, gameGrid);
+
+            if (mappedCommand is null)
             {
-                var mappedCommand = mapper.Map(command, gameGrid);
-
-                if (!gameManager.IsConfigured())
-                {
-                    gameManager.ConfigureManager(gameGrid);
-                }
-
-                var result = gameManager.ExecuteCommand(mappedCommand);
-
-                if (!string.IsNullOrEmpty(result))
-                {
-                    Console.WriteLine(result);
-                }
+                Console.WriteLine("At least one of the command has incorrect format or is not supported");
             }
-            catch (FormatException)
+
+            if (!gameManager.IsConfigured())
             {
-                Console.WriteLine("Provided command has incorrect format");
+                gameManager.ConfigureManager(gameGrid);
+            }
+
+            var result = gameManager.ExecuteCommand(mappedCommand);
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                Console.WriteLine(result);
             }
         }
     }

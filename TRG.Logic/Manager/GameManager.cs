@@ -36,7 +36,7 @@ namespace TRG.Logic.Manager
         public string ExecuteCommand(Command command)
         {
             if (grid is null) throw new NullReferenceException("Game Manager is not configured.");
-            if (command is null) throw new NullReferenceException("No command has been provided.");
+            if (command is null) return string.Empty;
 
             try
             {
