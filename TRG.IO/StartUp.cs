@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TRG.FileHandler.FileHandler;
-using TRG.InputHandler.Mappers;
 using TRG.IO.Services;
-using TRG.Logic.Manager;
 using TRG.Models.Model;
 
 namespace TRG.IO
@@ -12,11 +9,12 @@ namespace TRG.IO
     {
         private const string GridSection = "Grid";
 
-        internal static IFileService GetServices(ServiceProvider provider)
+        internal static (IFileService fileService, IConsoleService consoleService) GetServices(ServiceProvider provider)
         {
             var fileService = provider.GetService<IFileService>();
+            var consoleService = provider.GetService<IConsoleService>();
 
-            return fileService;
+            return (fileService, consoleService);
         }
 
         internal static Grid GetGrid(IConfiguration config) =>

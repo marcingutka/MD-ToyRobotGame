@@ -4,7 +4,7 @@
     {
         internal static string[] Commands { get
             {
-                return new string[] { "PLACE_ROBOT", "PLACE_WALL", "REPORT", "MOVE", "LEFT", "RIGHT", "CLEAR" };
+                return new string[] { "PLACE_ROBOT", "PLACE_WALL", "REPORT", "MOVE", "LEFT", "RIGHT", "CLEAR", "END" };
             } }
     }
 }
