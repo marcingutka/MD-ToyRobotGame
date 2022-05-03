@@ -27,28 +27,23 @@ while (input.ToUpper() != TextCommands.END)
 
     Console.Clear();
 
-    if (input == TextCommands.TYPE_MANUALLY)
+    if (input == TextCommands.UPLOAD_FILE)
+    {
+        Console.WriteLine($"Provide full file path: ");
+        input = Console.ReadLine();
+        fileService.HandleInput(input.ToUpper());
+        input = Console.ReadLine();
+    }
+    else if (input == TextCommands.TYPE_MANUALLY)
     {
         Console.WriteLine($"Type command or type 'BACK' to come back to home screen");
         input = Console.ReadLine();
         while (input.ToUpper() != TextCommands.BACK)
         {
-            consoleService.HandleInput(input);
-            Console.WriteLine("Provide next command or clear data by typing 'CLEAR' command or end run by providing 'END' command:");
+            consoleService.HandleInput(input.ToUpper());
             input = Console.ReadLine();
         }
         consoleService.HandleInput(TextCommands.CLEAR);
-    }
-    else if (input == TextCommands.UPLOAD_FILE)
-    {
-        Console.WriteLine($"Provide full file path: ");
-        input = Console.ReadLine();
-        while (input.ToUpper() != TextCommands.BACK)
-        {
-            fileService.HandleInput(input);
-            Console.WriteLine("Provide next file path or type 'END' to come back to home screen");
-            input = Console.ReadLine();
-        }
     }
     Console.Clear();
 }
