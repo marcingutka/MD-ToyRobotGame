@@ -14,5 +14,8 @@ namespace TRG.Logic.Tests.Helpers
 
         internal static PlaceRobot CreatePlaceRobotCommand(int x, int y, OrientationState orientation) =>
              new( new GridPosition { X = x, Y = y, Orientation = orientation } );
+
+        internal static PlaceWall CreatePlaceWallCommand(int x, int y) =>
+             new(new Position { X = x, Y = y });
     }
 }
