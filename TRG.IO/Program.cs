@@ -31,7 +31,10 @@ while (input.ToUpper() != TextCommands.END)
     {
         Console.WriteLine($"Provide full file path: ");
         input = Console.ReadLine();
-        fileService.HandleInput(input.ToUpper());
+        input = input.Replace(".txt", string.Empty) + ".txt";
+
+        fileService.HandleInput(input);
+
         input = Console.ReadLine();
     }
     else if (input == TextCommands.TYPE_MANUALLY)
@@ -41,6 +44,7 @@ while (input.ToUpper() != TextCommands.END)
         while (input.ToUpper() != TextCommands.BACK)
         {
             consoleService.HandleInput(input.ToUpper());
+
             input = Console.ReadLine();
         }
         consoleService.HandleInput(TextCommands.CLEAR);
