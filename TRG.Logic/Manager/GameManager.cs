@@ -1,4 +1,5 @@
 ﻿using TRG.Models.Commands;
+using TRG.Models.Model;
 
 namespace TRG.Logic.Manager
 {
@@ -6,9 +7,17 @@ namespace TRG.Logic.Manager
     {
         private readonly ICommandManager commandManager;
 
+        private Grid grid;
+        private Robot robot;
+        private List<GridPoint> points = new();
+
         public GameManager(ICommandManager commandManager)
         {
             this.commandManager = commandManager;
+        }
+        public void ConfigureManager(Grid grid)
+        {
+            throw new NotImplementedException();
         }
 
         public void AssignAllCommends(List<Command> commends)
