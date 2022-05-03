@@ -21,21 +21,33 @@ namespace TRG.InputHandler.Mappers
 
             foreach (var command in commands)
             {
-                if (string.IsNullOrEmpty(command)) continue;
+                var mappedCommand = Map(command, grid);
 
-                var splitedCommand = command.Trim().Split(COMMAND_SEPARATOR);
-                var commandName = splitedCommand[0];
-                var commandParameters = splitedCommand.Length > 1 ? splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList() : null;
-
-                var mappedCommand = commandMapper.Map(commandName, commandParameters, grid);
-
-                if (mappedCommand is not null)
+                if (mappedCommand != null)
                 {
                     commandList.Add(mappedCommand);
                 }
             }
 
             return commandList;
+        }
+
+        public Command Map(string command, Grid grid)
+        {
+            if (string.IsNullOrEmpty(command)) return null;
+
+            var splitedCommand = command.Trim().Split(COMMAND_SEPARATOR);
+            var commandName = splitedCommand[0];
+            var commandParameters = splitedCommand.Length > 1 ? splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList() : null;
+
+            var mappedCommand = commandMapper.Map(commandName, commandParameters, grid);
+
+            if (mappedCommand is not null)
+            {
+                return mappedCommand;
+            }
+
+            return null;
         }
     }
 }
