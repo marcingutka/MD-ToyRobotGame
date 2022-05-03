@@ -36,6 +36,7 @@ while (input.ToUpper() != TextCommands.END)
         fileService.HandleInput(input);
 
         input = Console.ReadLine();
+        fileService.ClearData();
     }
     else if (input == TextCommands.TYPE_MANUALLY)
     {
@@ -47,7 +48,7 @@ while (input.ToUpper() != TextCommands.END)
 
             input = Console.ReadLine();
         }
-        consoleService.HandleInput(TextCommands.CLEAR);
+        consoleService.ClearData();
     }
     Console.Clear();
 }

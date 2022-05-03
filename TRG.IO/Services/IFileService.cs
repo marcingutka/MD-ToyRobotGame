@@ -1,9 +1,8 @@
-﻿using TRG.Models.Model;
-
-namespace TRG.IO.Services
+﻿namespace TRG.IO.Services
 {
     internal interface IFileService
     {
         void HandleInput(string filePath);
+        void ClearData();
     }
 }

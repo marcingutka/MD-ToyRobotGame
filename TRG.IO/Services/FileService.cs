@@ -51,5 +51,8 @@ namespace TRG.IO.Services
                 }
             }
         }
+
+        public void ClearData() =>
+            gameManager.Clear();
     }
 }
