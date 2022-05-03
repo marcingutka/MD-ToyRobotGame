@@ -35,6 +35,7 @@ while (input.ToUpper() != TextCommands.END)
 
         fileService.HandleInput(input);
 
+        Console.WriteLine($"You will be moved to home screen");
         input = Console.ReadLine();
         fileService.ClearData();
     }

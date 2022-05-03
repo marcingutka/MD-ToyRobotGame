@@ -32,7 +32,6 @@ namespace TRG.IO.Services
             if (!File.Exists(filePath))
             {
                 Console.WriteLine($"The file does not exist (path: {filePath})");
-                Console.WriteLine($"You will be moved to home screen");
                 return;
             }
 
