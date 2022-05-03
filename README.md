@@ -14,3 +14,6 @@
   Steps:   
    a) clone or download this repository (guidesmiths---MartianRobots) into your local machine,  
    b) compile application and run it
+
+<b>5. Run application</b>    
+  Test files are prepared in TestData dictionary
