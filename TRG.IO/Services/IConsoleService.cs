@@ -4,6 +4,6 @@ namespace TRG.IO.Services
 {
     internal interface IConsoleService
     {
-        void HandleInput(string command, Grid grid);
+        void HandleInput(string command);
     }
 }

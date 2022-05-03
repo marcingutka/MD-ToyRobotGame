@@ -1,4 +1,5 @@
-﻿using TRG.InputHandler.Mappers;
+﻿using Microsoft.Extensions.Options;
+using TRG.InputHandler.Mappers;
 using TRG.Logic.Manager;
 using TRG.Models.Model;
 
@@ -8,17 +9,20 @@ namespace TRG.IO.Services
     {
         private readonly IInputMapper mapper;
         private readonly IGameManager gameManager;
+        private Grid gameGrid;
 
         public ConsoleService(
             IInputMapper mapper,
-            IGameManager gameManager
+            IGameManager gameManager,
+            IOptions<GridConfig> gridConfig
             )
         {
             this.mapper = mapper;
             this.gameManager = gameManager;
+            gameGrid = new Grid(gridConfig.Value.X, gridConfig.Value.Y);
         }
 
-        public void HandleInput(string command, Grid grid)
+        public void HandleInput(string command)
         {
             if (string.IsNullOrEmpty(command))
             {
@@ -33,11 +37,11 @@ namespace TRG.IO.Services
 
             try
             {
-                var mappedCommand = mapper.Map(command, grid);
+                var mappedCommand = mapper.Map(command, gameGrid);
 
                 if (!gameManager.IsConfigured())
                 {
-                    gameManager.ConfigureManager(grid);
+                    gameManager.ConfigureManager(gameGrid);
                 }
 
                 var result = gameManager.ExecuteCommand(mappedCommand);

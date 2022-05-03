@@ -1,4 +1,5 @@
-﻿using TRG.FileHandler.FileHandler;
+﻿using Microsoft.Extensions.Options;
+using TRG.FileHandler.FileHandler;
 using TRG.InputHandler.Mappers;
 using TRG.Logic.Manager;
 using TRG.Models.Model;
@@ -10,19 +11,23 @@ namespace TRG.IO.Services
         private readonly IFileHandler filehandler;
         private readonly IInputMapper mapper;
         private readonly IGameManager gameManager;
+        private Grid gameGrid;
 
         public FileService(
             IFileHandler filehandler,
             IInputMapper mapper,
-            IGameManager gameManager
+            IGameManager gameManager,
+            IOptions<GridConfig> gridConfig
             )
         {
             this.filehandler = filehandler;
             this.mapper = mapper;
             this.gameManager = gameManager;
+
+            gameGrid = new Grid(gridConfig.Value.X, gridConfig.Value.Y);
         }
 
-        public void HandleInput(string filePath, Grid grid)
+        public void HandleInput(string filePath)
         {
             if (!File.Exists(filePath))
             {
@@ -34,9 +39,9 @@ namespace TRG.IO.Services
 
             try
             {
-                var mappedCommands = mapper.Map(readCommands, grid);
+                var mappedCommands = mapper.Map(readCommands, gameGrid);
 
-                gameManager.ConfigureManager(grid);
+                gameManager.ConfigureManager(gameGrid);
                 var results = gameManager.ExecuteCommands(mappedCommands);
 
                 foreach (var result in results)
