@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRG.InputHandler", "InputHa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRG.InputHandler.Tests", "TRG.InputHandler.Tests\TRG.InputHandler.Tests.csproj", "{8B84246A-9656-4036-89B5-41AA7C63678A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRG.Logic", "TRG.Logic\TRG.Logic.csproj", "{4F99F757-84C4-4E7B-B99C-E61CDBDDAAE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRG.Logic", "TRG.Logic\TRG.Logic.csproj", "{4F99F757-84C4-4E7B-B99C-E61CDBDDAAE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRG.Logic.Tests", "TRG.Logic.Tests\TRG.Logic.Tests.csproj", "{1ACE200A-8BAC-4D4E-A045-88F9D614B06D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRG.Logic.Tests", "TRG.Logic.Tests\TRG.Logic.Tests.csproj", "{1ACE200A-8BAC-4D4E-A045-88F9D614B06D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRG.IO", "TRG.IO\TRG.IO.csproj", "{B02B4219-6290-4094-8D6A-940C65968DC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1ACE200A-8BAC-4D4E-A045-88F9D614B06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ACE200A-8BAC-4D4E-A045-88F9D614B06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ACE200A-8BAC-4D4E-A045-88F9D614B06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B02B4219-6290-4094-8D6A-940C65968DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B02B4219-6290-4094-8D6A-940C65968DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B02B4219-6290-4094-8D6A-940C65968DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B02B4219-6290-4094-8D6A-940C65968DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
