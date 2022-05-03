@@ -27,8 +27,7 @@ namespace TRG.Logic.Manager
 
         public string ExecuteCommand(Command command)
         {
-            var t = commandManager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
-            return t;
+            return commandManager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
         }
 
         public void Clear()
