@@ -4,7 +4,7 @@ using TRG.IO;
 using TRG.IO.DI;
 
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile(Path.GetFullPath(@"..\..\..\") + @"appsettings.json")
+    .AddJsonFile(Path.GetFullPath(@".\") + @"appsettings.json")
     .Build();
 
 var services = new ServiceCollection();
