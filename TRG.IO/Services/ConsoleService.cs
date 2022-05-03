@@ -39,7 +39,7 @@ namespace TRG.IO.Services
 
             if (mappedCommand is null)
             {
-                Console.WriteLine("At least one of the command has incorrect format or is not supported");
+                return;
             }
 
             if (!gameManager.IsConfigured())
