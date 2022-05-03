@@ -13,7 +13,7 @@
    - Visual Studio 2022
    
   Steps:   
-   a) clone or download this repository (guidesmiths---MartianRobots) into your local machine,  
+   a) clone or download this repository (MMD-ToyRobotGame) into your local machine,  
    b) compile application and run it
 
 <b>5. Run application</b>    
