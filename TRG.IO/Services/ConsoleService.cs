@@ -9,7 +9,7 @@ namespace TRG.IO.Services
     {
         private readonly IInputMapper mapper;
         private readonly IGameManager gameManager;
-        private Grid gameGrid;
+        private readonly Grid gameGrid;
 
         public ConsoleService(
             IInputMapper mapper,

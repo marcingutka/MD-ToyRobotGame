@@ -11,7 +11,7 @@ namespace TRG.IO.Services
         private readonly IFileHandler filehandler;
         private readonly IInputMapper mapper;
         private readonly IGameManager gameManager;
-        private Grid gameGrid;
+        private readonly Grid gameGrid;
 
         public FileService(
             IFileHandler filehandler,
