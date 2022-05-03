@@ -27,6 +27,8 @@ namespace TRG.Logic.Manager
 
         public string ExecuteCommand(Command command)
         {
+            if (grid is null) throw new Exception("Game Manager is not configured.");
+
             return commandManager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
         }
 
