@@ -104,5 +104,69 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             //Assert
             Assert.IsTrue(commandList.Count == 0);
         }
+
+        [Test]
+        public void Map_For_One_Command_When_Right_Command_Is_Correct_Returns_MovementCommandType()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = COMMAND_TYPE;
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Right));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.AreEqual(CommandType.Movement, mappedCommand.CommandType);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_Right_Command_Is_Correct_Returns_MovementObject()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = COMMAND_TYPE;
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Right));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.IsTrue(mappedCommand is Movement);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_Right_Command_Is_Correct_Returns_MovementObject_With_MovementCommand_Equal_Right()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = COMMAND_TYPE;
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x == null), Arg.Any<Grid>()).Returns(new Movement(MovementCommand.Right));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as Movement;
+
+            //Assert
+            Assert.AreEqual(MovementCommand.Right, mappedCommand.MovementCommand);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_Right_Command_Has_Parameters_Returns_Null()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = COMMAND_TYPE;
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x.Count > 0), Arg.Any<Grid>()).Returns((Movement)null);
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.IsNull(mappedCommand);
+        }
     }
 }

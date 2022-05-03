@@ -249,5 +249,180 @@ namespace TRG.InputHandler.Tests.Mappers.InputMapperTests
             //Assert
             Assert.IsTrue(commandList.Count == 0);
         }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_Returns_CorrectPlaceRobotCommandType()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.AreEqual(CommandType.PlaceRobot, mappedCommand.CommandType);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_Returns_CorrectPlaceRobotObject()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.IsTrue(mappedCommand is PlaceRobot);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_Returns_CorrectPlacementRow()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as PlaceRobot;
+
+            //Assert
+            Assert.AreEqual(2, mappedCommand.Position.Y);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_Returns_CorrectPlacementColumn()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as PlaceRobot;
+
+            //Assert
+            Assert.AreEqual(3, mappedCommand.Position.X);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_North_Returns_NorthPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.North }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as PlaceRobot;
+
+            //Assert
+            Assert.AreEqual(OrientationState.North, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_East_Returns_EastPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,EAST";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "EAST"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.East }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as PlaceRobot;
+
+            //Assert
+            Assert.AreEqual(OrientationState.East, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_South_Returns_SouthPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,SOUTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "SOUTH"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.South }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as PlaceRobot;
+            //Assert
+            Assert.AreEqual(OrientationState.South, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Is_Correct_And_Facing_Is_West_Returns_WestPlacementOrientation()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,WEST";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "WEST"), Arg.Any<Grid>()).Returns(new PlaceRobot(new GridPosition { Y = 2, X = 3, Orientation = OrientationState.West }));
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid) as PlaceRobot;
+
+            //Assert
+            Assert.AreEqual(OrientationState.West, mappedCommand.Position.Orientation);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Has_Invalid_Row_Returns_Null()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 6,3,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "6" && x[1] == "3" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.IsNull(mappedCommand);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Has_Invalid_Column_Returns_Null()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,6,NORTH";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "6" && x[2] == "NORTH"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.IsNull(mappedCommand);
+        }
+
+        [Test]
+        public void Map_For_One_Command_When_PlaceRobot_Command_Has_Invalid_Facing_Returns_Null()
+        {
+            //Arrange
+            var grid = new Grid(5, 5);
+            var command = "PLACE_ROBOT 2,3,CENTER";
+
+            commandMapper.Map(Arg.Is<string>(x => x == COMMAND_TYPE), Arg.Is<List<string>>(x => x[0] == "2" && x[1] == "3" && x[2] == "CENTER"), Arg.Any<Grid>()).Returns((PlaceRobot)null);
+
+            //Act
+            var mappedCommand = mapper.Map(command, grid);
+
+            //Assert
+            Assert.IsNull(mappedCommand);
+        }
     }
 }
