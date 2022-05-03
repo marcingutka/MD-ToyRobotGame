@@ -27,7 +27,7 @@ namespace TRG.InputHandler.Mappers
                 var commandName = splitedCommand[0];
                 var commandParameters = splitedCommand.Length > 1 ? splitedCommand[1].Split(COMMAND_PARAMETERS_SEPARATOR).ToList() : null;
 
-                var mappedCommand = this.commandMapper.Map(commandName, commandParameters, grid);
+                var mappedCommand = commandMapper.Map(commandName, commandParameters, grid);
 
                 if (mappedCommand is not null)
                 {

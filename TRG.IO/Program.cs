@@ -4,28 +4,24 @@ using TRG.IO;
 using TRG.IO.DI;
 
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile(@"F:\MottMacDonald\TRG.IO\appsettings.json")
+    .AddJsonFile(Path.GetFullPath(@"..\..\..\") + @"appsettings.json")
     .Build();
 
 var services = new ServiceCollection();
-
 DependencyInjection.CreateDependencies(services);
-
 var provider = services.BuildServiceProvider();
 
-var (fileHandler, inputMapper, robotManager) = StartUp.GetServices(provider);
+var fileService = StartUp.GetServices(provider);
 var grid = StartUp.GetGrid(configuration);
 
-var readCommands = fileHandler.ReadFile(@"F:\example1.txt");
-var mappedCommands = inputMapper.Map(readCommands, grid);
+Console.WriteLine($"Provide full path to the txt file or type command");
+var input = Console.ReadLine();
 
-robotManager.ConfigureManager(grid);
-var results = robotManager.ExecuteCommands(mappedCommands);
-
-foreach (var result in results)
+if(TextCommands.Commands.Contains(input.Split(' ')[0]))
 {
-    if (!string.IsNullOrEmpty(result))
-    {
-        Console.WriteLine(result);
-    }
+    throw new NotImplementedException();
+}
+else
+{
+    fileService.HandleInput(input, grid);
 }
