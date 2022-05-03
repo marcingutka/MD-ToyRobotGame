@@ -16,6 +16,16 @@ var provider = services.BuildServiceProvider();
 var (fileHandler, inputMapper, robotManager) = StartUp.GetServices(provider);
 var grid = StartUp.GetGrid(configuration);
 
-Console.WriteLine(grid.X);
+var readCommands = fileHandler.ReadFile(@"F:\example1.txt");
+var mappedCommands = inputMapper.Map(readCommands, grid);
 
-Console.WriteLine("Hello, World!");
+robotManager.ConfigureManager(grid);
+var results = robotManager.ExecuteCommands(mappedCommands);
+
+foreach (var result in results)
+{
+    if (!string.IsNullOrEmpty(result))
+    {
+        Console.WriteLine(result);
+    }
+}
