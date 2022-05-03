@@ -32,7 +32,8 @@ namespace TRG.Logic.Manager
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            gridPoints.Clear();
+            robot = null;
         }
 
     }
