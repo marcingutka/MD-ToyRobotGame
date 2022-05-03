@@ -11,7 +11,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
 {
     public class PlaceWallTests
     {
-        private CommandManager manager;
+        private ICommandManager manager;
 
         [SetUp]
         public void Setup()

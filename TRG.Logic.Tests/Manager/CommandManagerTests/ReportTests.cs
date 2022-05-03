@@ -9,7 +9,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
 {
     public class ReportTests
     {
-        private CommandManager manager;
+        private ICommandManager manager;
 
         [SetUp]
         public void Setup()

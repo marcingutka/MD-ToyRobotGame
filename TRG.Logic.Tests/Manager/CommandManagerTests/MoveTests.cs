@@ -10,7 +10,7 @@ namespace TRG.Logic.Tests.Manager.CommandManagerTests
 {
     public class MoveTests
     {
-        private CommandManager manager;
+        private ICommandManager manager;
 
         [SetUp]
         public void Setup()
