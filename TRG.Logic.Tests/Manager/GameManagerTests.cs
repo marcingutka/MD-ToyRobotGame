@@ -77,14 +77,14 @@ namespace TRG.Logic.Tests.Manager
 
             manager.ConfigureManager(grid);
 
-            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Any<List<GridPoint>>(), Arg.Is<Command>(x => x is PlaceRobot), grid)
+            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Any<List<GridPoint>>(), Arg.Is<Command>(x => x is PlaceWall), grid)
                 .Returns(x =>
                 {
                     x[1] = new List<GridPoint> { CreatorHelper.CreateGridPoint(1, 1, true) };
                     return string.Empty;
                 });
 
-            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Is<List<GridPoint>>(x => x.Contains(CreatorHelper.CreateGridPoint(1, 1, true))), Arg.Is<Command>(x => x is PlaceWall), grid)
+            commandManager.ExecuteCommand(ref Arg.Any<Robot>(), ref Arg.Is<List<GridPoint>>(x => x[0].Position.X == 1 && x[0].Position.Y == 1 && x[0].IsWall), Arg.Is<Command>(x => x is PlaceRobot), grid)
                 .Returns(Responses.COORDINATES_ARE_OCCUPIED_BY_WALL);
 
             //Act

@@ -17,7 +17,7 @@ namespace TRG.Logic.Manager
         }
         public void ConfigureManager(Grid grid)
         {
-            throw new NotImplementedException();
+            this.grid = grid;
         }
 
         public List<string> ExecuteCommands(List<Command> commends)
@@ -27,7 +27,8 @@ namespace TRG.Logic.Manager
 
         public string ExecuteCommand(Command command)
         {
-            throw new NotImplementedException();
+            var t = commandManager.ExecuteCommand(ref robot, ref gridPoints, command, grid);
+            return t;
         }
 
         public void Clear()
